@@ -1,0 +1,23 @@
+:root {
+    --main: #120238;
+    /* undtermined */
+    --primary: #333;
+    /* undtermined */
+    --secondary: #555;
+    /* undtermined */
+    --accent: #007BFF;
+    /* undtermined */
+    --text: #bebebe;
+}
+
+body,
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--text);
+    background-color: var(--main);
+}

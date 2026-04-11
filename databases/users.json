@@ -1,0 +1,14 @@
+[
+    {
+        "username": "bail",
+        "password": "$2y$12$UwlLOuEiW4MX8joAHuyvXOdekxq7ZpIEb81WB7L7EfzRqwGg9BIqy"
+    },
+    {
+        "username": "test",
+        "password": "$2y$12$SKV3bO5mBx5g9KvUFD9UJe\/bUUc05O37s7LEeaKV8rikKN1GfVg1W"
+    },
+    {
+        "username": "admin",
+        "password": "$2y$12$HfPmXoO3v8vpckcWYxClLuxgIzUZ8\/GpeCmKfxnPAVX48Gg.Zm2nK"
+    }
+]
