@@ -1,4 +1,12 @@
 <?php
+
+
+$loggedIn = isset($_COOKIE["username"]);
+if ($loggedIn) {
+    header("Location: ../../index.php");
+    exit;
+}
+
 $message = "";
 $error = "";
 
@@ -41,6 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Science Jeopardy - Register</title>
+    <link rel="stylesheet" href="../../css/register.css">
+
 </head>
 <body>
     <div id="register-container">

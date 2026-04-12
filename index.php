@@ -1,4 +1,14 @@
+<?php
+session_start();
 
+// Restore session from cookie 
+if (!isset($_SESSION["username"]) && isset($_COOKIE["username"])) {
+    $_SESSION["username"] = $_COOKIE["username"];
+}
+
+// Define login state
+$loggedIn = isset($_SESSION["username"]);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,15 +20,28 @@
 </head>
 <body>
 
-    <div id="index-header">
+    <div id="index-content"> 
+        <div id="index-header">
 
-        <h1>Welcome to Computer Science Jeopardy!</h1>
-        <p>Test your knowledge of computer science with our fun and interactive Jeopardy game. Sign in to play!</p>
+            <?php if ($loggedIn): ?>
+                <h1>
+                    Welcome, <?php echo htmlspecialchars($_SESSION["username"]); ?> 
+                    to Computer Science Jeopardy!
+                </h1>
+            <?php else: ?>
+                <h1>Welcome to Computer Science Jeopardy!</h1>
+            <?php endif; ?>
+            <p>Test your knowledge of computer science with our fun and interactive Jeopardy game. Sign in to play!</p>
 
-    </div>
-    <div id="index-options">
-        <button class="btn btn-primary"><a href="./pages/login/login.php">Sign In</a></button>
-        <button class="btn btn-primary"><a href="./pages/register/register.php">Register</a></button>
+        </div>
+        <div id="index-options">
+            <?php if (!$loggedIn): ?>
+                <a class="btn btn-primary" href="./pages/login/login.php">Sign In</a>
+                <a class="btn btn-primary" href="./pages/register/register.php">Register</a>
+            <?php else: ?>
+                <a class="btn btn-success" href="./pages/game/play.php">Play</a>
+            <?php endif; ?>
+        </div>
     </div>
 
     

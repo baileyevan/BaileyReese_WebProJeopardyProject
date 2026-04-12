@@ -1,5 +1,39 @@
 <?php
 
+session_start();
+$loggedIn = isset($_SESSION["username"]);
+if ($loggedIn) {
+    header("Location: ../../index.php");
+    exit;
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $remember = isset($_POST["remember-me"]);
+
+    $file = "../../databases/users.json";
+    $users = json_decode(file_get_contents($file), true);
+
+    if (!$users) $users = [];
+
+    foreach ($users as $user) {
+        if ($user["username"] === $username && password_verify($password, $user["password"])) {
+            $_SESSION["username"] = $username;
+
+            if ($remember) {
+                setcookie("username", $username, time() + (86400 * 7), "/"); // 7 days
+            }
+
+            header("Location: ../../index.php");
+            exit;
+        }
+    }
+
+    $error = "Invalid username or password";
+}
+
+
 
 
 ?>
@@ -24,13 +58,20 @@
             ?>
         </div>
         <div id="login-form-container">
-            <form action="login.php" method="post">
+            <form method="post">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required><br><br>
                 
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required><br><br>
-                
+
+                <input type="checkbox" id="remember" name="remember-me">
+                <label for="remember">Remember me</label><br><br>
+
+                <?php if (!empty($error)): ?>
+                    <p style="color:red;"><?php echo $error; ?></p>
+                <?php endif; ?>
+
                 <input type="submit" value="Login">
             </form>
         </div>
