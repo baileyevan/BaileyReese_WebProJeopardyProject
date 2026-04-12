@@ -1,0 +1,343 @@
+{
+    "categories": [{
+            "name": "Algorithms",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This simple sorting algorithm repeatedly steps through a list, compares adjacent elements, and swaps them if they are in the wrong order.",
+                    "answer": "What is Bubble Sort?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This algorithm finds the shortest path between nodes in a graph, which may represent, for example, road networks.",
+                    "answer": "What is Dijkstra's algorithm?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This divide-and-conquer sorting algorithm works by selecting a 'pivot' element and partitioning the array around it.",
+                    "answer": "What is Quicksort?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This string-searching algorithm preprocesses the pattern to create a partial match table (also known as the 'failure function') to avoid redundant comparisons.",
+                    "answer": "What is the KMP (Knuth–Morris–Pratt) algorithm?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This algorithm for finding the maximum flow in a flow network repeatedly augments paths using residual capacities and can be implemented with BFS (Edmonds–Karp).",
+                    "answer": "What is the Ford–Fulkerson algorithm?"
+                }
+            ]
+        },
+        {
+            "name": "Web Development",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This markup language is the standard for creating web pages and web applications.",
+                    "answer": "What is HTML (HyperText Markup Language)?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This CSS framework, developed by Twitter, is popular for building responsive, mobile-first projects.",
+                    "answer": "What is Bootstrap?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This JavaScript runtime, built on Chrome's V8 engine, allows developers to run JavaScript on the server side.",
+                    "answer": "What is Node.js?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This HTTP status code means 'Not Found', indicating that the server cannot find the requested resource.",
+                    "answer": "What is 404?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This security policy helps mitigate cross-site scripting (XSS) by allowing servers to specify which domains a browser should consider legitimate sources of executable scripts.",
+                    "answer": "What is CSP (Content Security Policy)?"
+                }
+            ]
+        },
+        {
+            "name": "Artificial Intelligence",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This subfield of AI focuses on the development of algorithms that allow computers to learn from and make predictions based on data.",
+                    "answer": "What is Machine Learning?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This type of learning uses labeled training data to train a model to classify data or predict outcomes.",
+                    "answer": "What is Supervised Learning?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This neural network architecture is particularly well-suited for processing sequential data like time series or natural language.",
+                    "answer": "What is an RNN (Recurrent Neural Network)?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This technique involves adjusting the weights of a neural network by calculating the gradient of the loss function with respect to each weight using the chain rule.",
+                    "answer": "What is Backpropagation?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This generative model, introduced by Ian Goodfellow in 2014, pits two neural networks against each other (a generator and a discriminator) to produce synthetic data.",
+                    "answer": "What is a GAN (Generative Adversarial Network)?"
+                }
+            ]
+        },
+        {
+            "name": "Databases",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This standard language is used to manage and query relational databases.",
+                    "answer": "What is SQL (Structured Query Language)?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This database property acronym (Atomicity, Consistency, Isolation, Durability) ensures reliable processing of database transactions.",
+                    "answer": "What is ACID?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This type of NoSQL database stores data as key-value pairs, making it extremely fast for simple lookups.",
+                    "answer": "What is a key-value store (e.g., Redis, DynamoDB)?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This database design technique reduces data redundancy by decomposing tables to eliminate update anomalies, typically achieving third normal form.",
+                    "answer": "What is Normalization?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This concurrency control protocol uses read and write timestamps to ensure conflict-serializability without locking.",
+                    "answer": "What is Timestamp Ordering (or Timestamp-based Concurrency Control)?"
+                }
+            ]
+        },
+        {
+            "name": "Programming Languages",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This high-level, interpreted language known for its readability and extensive libraries is often the first language taught to beginners.",
+                    "answer": "What is Python?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This language, created by Bjarne Stroustrup, extends the C language with classes and object-oriented features.",
+                    "answer": "What is C++?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This functional programming language, known for its powerful macro system, runs on the JVM and is a dialect of Lisp.",
+                    "answer": "What is Clojure?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This feature in Rust, denoted by the '&' symbol, allows a program to refer to data without taking ownership, ensuring memory safety without garbage collection.",
+                    "answer": "What is a reference (or borrowing)?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This programming paradigm, embodied by languages like Haskell and Agda, treats computation as the evaluation of mathematical functions and avoids mutable state and side effects.",
+                    "answer": "What is purely functional programming?"
+                }
+            ]
+        },
+        {
+            "name": "Operating Systems",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This is the core software component of an operating system that manages hardware resources and provides services to applications.",
+                    "answer": "What is the Kernel?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This operating system, known for its mascot Tux, is open-source and widely used on servers and supercomputers.",
+                    "answer": "What is Linux?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This scheduling algorithm runs each process for a fixed time slice, cycling through all ready processes in a FIFO manner.",
+                    "answer": "What is Round Robin scheduling?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This condition for deadlock occurs when a process holds at least one resource while waiting for additional resources held by other processes.",
+                    "answer": "What is Hold and wait (or 'wait for')?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This memory management technique combines paging and segmentation, providing a linear virtual address space for processes while the system manages physical memory in pages.",
+                    "answer": "What is Paged Segmentation (or segmented paging)?"
+                }
+            ]
+        },
+        {
+            "name": "Computer Networks",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This protocol is the foundation of data communication on the internet, responsible for breaking data into packets and reassembling them.",
+                    "answer": "What is IP (Internet Protocol)?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This device forwards data packets between computer networks, often connecting a local network to the internet.",
+                    "answer": "What is a Router?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This reliable, connection-oriented transport protocol ensures in-order delivery and error checking through acknowledgments and retransmissions.",
+                    "answer": "What is TCP (Transmission Control Protocol)?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This network address translation technique allows multiple devices on a private network to share a single public IP address by using different source ports.",
+                    "answer": "What is PAT (Port Address Translation) or NAPT?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This routing protocol, an interior gateway protocol, uses the Shortest Path First (SPF) algorithm and maintains a link-state database rather than distance vectors.",
+                    "answer": "What is OSPF (Open Shortest Path First)?"
+                }
+            ]
+        },
+        {
+            "name": "Cybersecurity",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This type of malware disguises itself as legitimate software to trick users into installing it.",
+                    "answer": "What is a Trojan (or Trojan Horse)?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This attack involves sending deceptive emails that appear to come from a legitimate source to steal sensitive information.",
+                    "answer": "What is Phishing?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This cryptographic hash function, widely used in SSL/TLS certificates and digital signatures, produces a 256-bit digest.",
+                    "answer": "What is SHA-256 (Secure Hash Algorithm 256-bit)?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This type of vulnerability, often ranked #1 in the OWASP Top 10, occurs when an application includes untrusted data in a web page without proper escaping.",
+                    "answer": "What is Cross-Site Scripting (XSS)?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This attack against RSA exploits differences in the time taken to decrypt specially crafted ciphertexts, allowing recovery of the private key.",
+                    "answer": "What is a timing attack (or Bleichenbacher's attack)?"
+                }
+            ]
+        },
+        {
+            "name": "Software Engineering",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This version control system, created by Linus Torvalds, is the most widely used modern system for tracking changes in source code.",
+                    "answer": "What is Git?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This software development methodology builds software in short, iterative cycles called sprints, with frequent customer feedback.",
+                    "answer": "What is Agile (or Scrum)?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This principle, the 'I' in SOLID, states that no client should be forced to depend on methods it does not use.",
+                    "answer": "What is the Interface Segregation Principle?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This design pattern, one of the Gang of Four, provides a simplified interface to a complex subsystem, often used as an entry point.",
+                    "answer": "What is the Facade pattern?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This model of software development estimates project effort based on lines of code and uses a set of cost drivers including product, hardware, personnel, and project attributes.",
+                    "answer": "What is COCOMO (Constructive Cost Model)?"
+                }
+            ]
+        },
+        {
+            "name": "Data Structures",
+            "questions": [{
+                    "value": 100,
+                    "difficulty": "easiest",
+                    "question": "This linear data structure follows the Last-In-First-Out (LIFO) principle, like a stack of plates.",
+                    "answer": "What is a Stack?"
+                },
+                {
+                    "value": 200,
+                    "difficulty": "easier",
+                    "question": "This data structure stores elements in a hierarchical parent-child relationship, with a single root node.",
+                    "answer": "What is a Tree?"
+                },
+                {
+                    "value": 300,
+                    "difficulty": "medium",
+                    "question": "This self-balancing binary search tree ensures O(log n) insertion and lookup by maintaining a color property (red/black) with specific rules.",
+                    "answer": "What is a Red-Black Tree?"
+                },
+                {
+                    "value": 400,
+                    "difficulty": "harder",
+                    "question": "This data structure, often used in Dijkstra's algorithm, always returns the smallest (or largest) element and supports efficient decrease-key operations.",
+                    "answer": "What is a Priority Queue (typically implemented with a binary heap or Fibonacci heap)?"
+                },
+                {
+                    "value": 500,
+                    "difficulty": "hardest",
+                    "question": "This probabilistic data structure tests whether an element is a member of a set, can yield false positives but never false negatives, and is space-efficient.",
+                    "answer": "What is a Bloom Filter?"
+                }
+            ]
+        }
+    ]
+}
