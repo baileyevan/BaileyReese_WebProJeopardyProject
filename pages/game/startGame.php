@@ -8,6 +8,8 @@ if (!isset($_SESSION["username"]) && isset($_COOKIE["username"])) {
 
 // Define login state
 $loggedIn = isset($_SESSION["username"]);
+$hasGame = isset($_COOKIE["hasGame"]);
+
 
 if (!$loggedIn) {
     header("Location: ../login/login.php");
@@ -24,6 +26,21 @@ if (!$loggedIn) {
     <title>Computer Science Jeopardy - Start Game</title>
 </head>
 <body>
+    <div id="game-start-container">
+        <div id="game-start-header">
+            <h1>Computer Science Jeopardy</h1>
+        </div>
+        <div id="game-start-options">
+            <?php if ($hasGame): ?>
+                <a href="./jeopardy.php" class="btn btn-primary">Resume</a>
+                <a href="./categorySelection.php" class="btn btn-primary">New Game</a>
+            <?php else: ?>
+                <a href="./categorySelection.php" class="btn btn-primary">New Game</a>
+            <?php endif; ?>
+
+
+        </div>
+    </div>
     
 </body>
 </html>

@@ -39,7 +39,7 @@ $loggedIn = isset($_SESSION["username"]);
                 <a class="btn btn-primary" href="./pages/login/login.php">Sign In</a>
                 <a class="btn btn-primary" href="./pages/register/register.php">Register</a>
             <?php else: ?>
-                <a class="btn btn-success" href="./pages/game/play.php">Play</a>
+                <a class="btn btn-success" href="./pages/game/startGame.php">Play</a>
             <?php endif; ?>
         </div>
     </div>

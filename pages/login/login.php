@@ -44,6 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Science Jeopardy - Login</title>
+    <link rel="stylesheet" href="../../css/index.css">
+    
 </head>
 <body>
     <div id="login-container">
@@ -59,20 +61,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         <div id="login-form-container">
             <form method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required><br><br>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required><br><br>
+                    
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br><br>
+
+                    <input type="checkbox" id="remember" name="remember-me">
+                    <label for="remember">Remember me</label><br><br>
+
+                    <?php if (!empty($error)): ?>
+                        <p style="color:red;"><?php echo $error; ?></p>
+                    <?php endif; ?>
+                </div>
+                <div id="login-form-buttons">
+                    <input type="submit" value="Login">
+                    <a href="../register/register.php">Register</a>
+                </div>
                 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br><br>
-
-                <input type="checkbox" id="remember" name="remember-me">
-                <label for="remember">Remember me</label><br><br>
-
-                <?php if (!empty($error)): ?>
-                    <p style="color:red;"><?php echo $error; ?></p>
-                <?php endif; ?>
-
-                <input type="submit" value="Login">
             </form>
         </div>
     </div>
