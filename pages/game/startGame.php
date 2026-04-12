@@ -37,8 +37,6 @@ if (!$loggedIn) {
             <?php else: ?>
                 <a href="./categorySelection.php" class="btn btn-primary">New Game</a>
             <?php endif; ?>
-
-
         </div>
     </div>
     
