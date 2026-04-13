@@ -1,20 +1,6 @@
 <?php
 session_start();
 
-// Restore session from cookie 
-if (!isset($_SESSION["username"]) && isset($_COOKIE["username"])) {
-    $_SESSION["username"] = $_COOKIE["username"];
-}
-
-// Define login state
-$loggedIn = isset($_SESSION["username"]);
-$hasGame = isset($_COOKIE["hasGame"]);
-
-
-if (!$loggedIn) {
-    header("Location: ../login/login.php");
-    exit;
-}
 
 ?>
 

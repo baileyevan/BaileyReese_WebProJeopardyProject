@@ -1,0 +1,89 @@
+*,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn {
+    width: 200px;
+    height: 50px;
+    background-color: blueviolet;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+}
+
+#player-select-container {
+    margin: auto;
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80vw;
+    height: 80vh;
+    border-radius: 20px;
+    background-color: red;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+}
+
+#player-select-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 15%;
+    width: 90%;
+    margin: auto;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    background-color: blue;
+}
+
+#players-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 55%;
+    margin: auto;
+    margin-bottom: 2.5%;
+    background-color: yellow;
+}
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 40%;
+    background-color: brown;
+}
+
+.player-remember-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    background-color: chartreuse;
+}
+
+#player-select-controls {
+    height: fit-content;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    background-color: aqua;
+}
