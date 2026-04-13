@@ -2,45 +2,17 @@
 
 session_start();
 
-if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["confirm"])) {
-    $player1Name = $_POST["player1Name"];
-    $player1Password = $_POST["player1Password"];
-    $rememberPlayer1 = isset($_POST["rememberPlayer1"]);
+// Debugging: View POST data
+//var_dump($_POST);
 
-    $player2Name = $_POST["player2Name"];
-    $player2Password = $_POST["player2Password"];
-    $rememberPlayer2 = isset($_POST["rememberPlayer2"]);
 
-    $file = "../../databases/users.json";
-    $users = json_decode(file_get_contents($file), true);
-
-    if (!$users) $users = [];
-
-    foreach ($users as $user) {
-        // Check for player 1
-        if ($user["username"] === $player1Name && password_verify($player1Password, $user["password"])) {
-            $_SESSION["player1Name"] = $player1Name;
-
-            if ($rememberPlayer1) {
-                setcookie("player1Name", $player1Name, time() + (86400 *7), "/"); // 7days
-            }
-        } else {
-            $errorPlayer1 = "Player 1 Invalid Login";
-        }
-
-        // Check for player 2
-        if ($user["username"] === $player2Name && password_verify($player2Password, $user["password"])) {
-            $_SESSION["player2Name"] = $player2Name;
-
-            if ($rememberPlayer2) {
-                setcookie("player2Name", $player2Name, time() + (86400 *7), "/"); // 7days
-            }
-        } else {
-            $errorPlayer2 = "Player 2 Invalid Login";
-        }
-    }  
+// Handle play button
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["play"])) {
+    header("Location: ./startGame.php");
+    exit;
 }
 
+// Handle logout
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["logout"])) {
 
     // Remove session data
@@ -53,6 +25,59 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["logout"])) {
 
     header("Location: ./playerSelect.php");
     exit;
+}
+
+if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["confirm"])) {
+    $player1Name = $_POST["player1Name"];
+    $player1Password = $_POST["player1Password"];
+    $rememberPlayer1 = isset($_POST["rememberPlayer1"]);
+    
+    $player2Name = $_POST["player2Name"];
+    $player2Password = $_POST["player2Password"];
+    $rememberPlayer2 = isset($_POST["rememberPlayer2"]);
+
+    $samePlayers = $player1Name === $player2Name;
+    if($samePlayers) {
+        $errorPlayer1 = "Player 1 cannot be the same as Player 2";
+        $errorPlayer2 = "Player 2 cannot be the same as Player 1";
+    } else {
+        $file = "../../databases/users.json";
+        $users = json_decode(file_get_contents($file), true);
+
+        if (!$users) $users = [];
+
+        $foundPlayer1 = false;
+        $foundPlayer2 = false;
+
+
+        foreach ($users as $user) {
+            if ($user["username"] === $player1Name && password_verify($player1Password, $user["password"])) {
+                $_SESSION["player1Name"] = $player1Name;
+                $foundPlayer1 = true;
+
+                if ($rememberPlayer1) {
+                    setcookie("player1Name", $player1Name, time() + (86400 *7), "/");
+                }
+            }
+
+            if ($user["username"] === $player2Name && password_verify($player2Password, $user["password"])) {
+                $_SESSION["player2Name"] = $player2Name;
+                $foundPlayer2 = true;
+
+                if ($rememberPlayer2) {
+                    setcookie("player2Name", $player2Name, time() + (86400 *7), "/");
+                }
+            }
+        }
+
+        if (!$foundPlayer1) $errorPlayer1 = "Player 1 Invalid Login";
+        if (!$foundPlayer2) $errorPlayer2 = "Player 2 Invalid Login";  
+
+    }
+
+
+
+    
 }
 
 // if both players exist in the session then they
@@ -118,17 +143,22 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
                 <?php if($readyToPlay): ?>
 
                     <input class="btn inv" type="submit" name="logout" value="LOGOUT" >
-                    <a href="./startGame.php" class="btn"><input class="btn inv" type="button" value="PLAY"></a>
+                    <input class="btn inv" type="submit" name="play" value="PLAY" >
+                    
 
                 <?php elseif (isset($_SESSION["player1Name"]) || isset($_SESSION["player2Name"])): ?>
 
                     <input class="btn inv" type="submit" name="logout" value="LOGOUT" >
-                    <a href="../register/register.php" class="btn"><input class="btn inv" type="button" value="REGISTER A PLAYER"></a>
+                    <div class="btn inv">
+                        <a href="../register/register.php" class="inv">REGISTER A USER</a>
+                    </div>
                     <input class="btn inv" type="submit" name="confirm" value="CONFIRM">
 
                 <?php else: ?>
 
-                    <a href="../register/register.php" class="btn"><input class="btn inv" type="button" value="REGISTER A PLAYER"></a>
+                    <div class="btn inv">
+                        <a href="../register/register.php" class="inv">REGISTER A USER</a>
+                    </div>
                     <input class="btn inv" type="submit" name="confirm" value="CONFIRM">
 
                 <?php endif; ?>

@@ -1,6 +1,20 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["player1Name"]) || !isset($_SESSION["player2Name"])) {
+    header("Location: ./playerSelect.php");
+    exit;
+};
+
+$player1 = $_SESSION["player1Name"];
+$player2 = $_SESSION["player2Name"];
+
+$hasGame = false;
+
+$file = "../../databases/games.json";
+
+$games = json_decode(file_get_contents($file), true);
+
 
 ?>
 
