@@ -77,37 +77,37 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
                 <h1>Player Selection</h1>
             </div>
             <div id="players-container">
-                <div class="player-container">
+                <div class="player-container p1">
                     <?php if(isset($_SESSION["player1Name"])): ?>
-                        <h2>WELCOME: <?php echo "<strong>" . htmlspecialchars($_SESSION["player1Name"]) . "!</strong>"; ?>
+                        <h2 class="success-welcome">WELCOME: <?php echo "<strong>" . htmlspecialchars($_SESSION["player1Name"]) . "!</strong>"; ?>
                     <?php else: ?>
                         <h2>Player 1 Login...</h2>
                         <?php if (!empty($errorPlayer1)): ?>
-                            <p style="color:red;"><?php echo $errorPlayer1; ?></p>
+                            <p style="color:rgb(196, 46, 46);"><?php echo $errorPlayer1; ?></p>
                         <?php endif; ?>
                         <input type="text" id="player1Name" name="player1Name" placeholder="Player 1 Name..." >
                         <input type="password" id="player1Password" name="player1Password" placeholder="Player 1 Password..." >
                         <div class="player-remember-container">
-                            <label for="rememberPlayer1">Remember me</label>
-                            <input type="checkbox" id="rememberPlayer1" name="rememberPlayer1">
+                            <pre><label class="remember-label" for="rememberPlayer1">Remember me</label></pre>
+                            <input type="checkbox" class="" id="rememberPlayer1" name="rememberPlayer1">
                         </div>
 
                     <?php endif; ?>
                     
                 </div>
-                <div class="player-container">
+                <div class="player-container p2">
                     <?php if(isset($_SESSION["player2Name"])): ?>
-                        <h2>WELCOME: <?php echo "<strong>" . htmlspecialchars($_SESSION["player2Name"]) . "!</strong>"; ?>
+                        <h2 class="success-welcome">WELCOME: <?php echo "<strong>" . htmlspecialchars($_SESSION["player2Name"]) . "!</strong>"; ?>
                     <?php else: ?>
                         <h2>Player 2 Login...</h2>
                         <?php if (!empty($errorPlayer2)): ?>
-                            <p style="color:red;"><?php echo $errorPlayer2; ?></p>
+                            <p style="color:rgb(98, 29, 235);"><?php echo $errorPlayer2; ?></p>
                         <?php endif; ?>
                         <input type="text" id="player2Name" name="player2Name" placeholder="Player 2 Name..." >
                         <input type="password" id="player2Password" name="player2Password" placeholder="Player 2 Password..." >
                         <div class="player-remember-container">
-                            <label for="rememberPlayer2">Remember me</label>
-                            <input type="checkbox" id="rememberPlayer2" name="rememberPlayer2">
+                            <pre><label for="rememberPlayer2">Remember me</label></pre>
+                            <input type="checkbox" class="" id="rememberPlayer2" name="rememberPlayer2" >
                         </div>
                     <?php endif; ?>
                     
@@ -117,19 +117,19 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
             <div id="player-select-controls">
                 <?php if($readyToPlay): ?>
 
-                    <input class="btn" type="submit" name="logout" value="LOGOUT" >
-                    <a href="./startGame.php" class="btn"><input class="btn" type="button" value="PLAY"></a>
+                    <input class="btn inv" type="submit" name="logout" value="LOGOUT" >
+                    <a href="./startGame.php" class="btn"><input class="btn inv" type="button" value="PLAY"></a>
 
                 <?php elseif (isset($_SESSION["player1Name"]) || isset($_SESSION["player2Name"])): ?>
 
-                    <input class="btn" type="submit" name="logout" value="LOGOUT" >
-                    <a href="../register/register.php" class="btn"><input class="btn" type="button" value="REGISTER A PLAYER"></a>
-                    <input class="btn" type="submit" name="confirm" value="CONFIRM">
+                    <input class="btn inv" type="submit" name="logout" value="LOGOUT" >
+                    <a href="../register/register.php" class="btn"><input class="btn inv" type="button" value="REGISTER A PLAYER"></a>
+                    <input class="btn inv" type="submit" name="confirm" value="CONFIRM">
 
                 <?php else: ?>
 
-                    <a href="../register/register.php" class="btn"><input class="btn" type="button" value="REGISTER A PLAYER"></a>
-                    <input class="btn" type="submit" name="confirm" value="CONFIRM">
+                    <a href="../register/register.php" class="btn"><input class="btn inv" type="button" value="REGISTER A PLAYER"></a>
+                    <input class="btn inv" type="submit" name="confirm" value="CONFIRM">
 
                 <?php endif; ?>
             </div>

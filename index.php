@@ -1,13 +1,6 @@
 <?php
 session_start();
 
-// Restore session from cookie 
-if (!isset($_SESSION["username"]) && isset($_COOKIE["username"])) {
-    $_SESSION["username"] = $_COOKIE["username"];
-}
-
-// Define login state
-$loggedIn = isset($_SESSION["username"]);
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +19,9 @@ $loggedIn = isset($_SESSION["username"]);
             <p>Test your knowledge of computer science with our fun and interactive Jeopardy game. Sign in to play!</p>
         </div>
         <div id="index-options">
-            <a href="./pages/game/playerSelect.php">Play</a>
+            <a class="" id="player-select-link" href="./pages/game/playerSelect.php">
+                <input type="button" class="btn" value="PLAY" name="play">    
+            </a>
         </div>
     </div>
 

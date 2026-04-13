@@ -1,21 +1,45 @@
+:root {
+    --bg: #0B1B3A;
+    --card: #122B52;
+    --accent: #F6C445;
+    --text: #EAF2FF;
+    --muted: #A7B4C7;
+    --player-1: rgb(98, 29, 235);
+    --player-2: rgb(196, 46, 46);
+}
+
 *,
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg);
 }
 
 a {
     text-decoration: none;
-    color: white;
+    color: var(--text);
 }
 
 .btn {
     width: 200px;
     height: 50px;
-    background-color: blueviolet;
+    background-color: var(--accent);
     border: 1px solid black;
     border-radius: 10px;
-    color: white;
+    color: var(--text);
+}
+
+.inv {
+    color: black;
+    font-weight: 600;
+}
+
+.success-welcome {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #player-select-container {
@@ -28,7 +52,8 @@ a {
     width: 80vw;
     height: 80vh;
     border-radius: 20px;
-    background-color: red;
+    background-color: var(--card);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 form {
@@ -46,7 +71,7 @@ form {
     margin: auto;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
-    background-color: blue;
+    color: var(--text);
 }
 
 #players-container {
@@ -55,27 +80,60 @@ form {
     justify-content: space-evenly;
     width: 80%;
     height: 55%;
-    margin: auto;
-    margin-bottom: 2.5%;
-    background-color: yellow;
+    margin: 0 auto;
 }
 
 .player-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 80%;
+    height: 90%;
     width: 40%;
-    background-color: brown;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.p1 {
+    background-color: var(--player-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p2 {
+    background-color: var(--player-2);
+}
+
+.player-container h2 {
+    color: var(--text);
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.player-container input {
+    background-color: var(--bg);
+    color: var(--text);
+    margin-bottom: 5%;
+    border: none;
+    border-radius: 20px;
+    height: 30px;
+    width: 80%;
+    padding-left: 20px;
+}
+
+.player-container input::placeholder {
+    color: var(--text);
 }
 
 .player-remember-container {
     display: flex;
+    flex-direction: row;
+    width: fit-content;
     align-items: center;
-    justify-content: space-evenly;
-    width: 50%;
-    background-color: chartreuse;
+    justify-content: center;
+    gap: 20px;
+    margin-top: -5%;
+    color: var(--text);
 }
 
 #player-select-controls {
@@ -83,7 +141,13 @@ form {
     width: 60%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 50px;
     margin: auto;
-    background-color: aqua;
+    margin-top: 1.5%;
+    height: 15%;
+}
+
+#player-select-controls input {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }

@@ -1,13 +1,9 @@
 :root {
-    --main: #120238;
-    /* undtermined */
-    --primary: #333;
-    /* undtermined */
-    --secondary: #555;
-    /* undtermined */
-    --accent: #007BFF;
-    /* undtermined */
-    --text: #bebebe;
+    --bg: #0B1B3A;
+    --card: #122B52;
+    --accent: #F6C445;
+    --text: #EAF2FF;
+    --muted: #A7B4C7;
 }
 
 body,
@@ -19,7 +15,7 @@ body,
 
 body {
     color: var(--text);
-    background-color: var(--main);
+    background-color: var(--bg);
 }
 
 a {
@@ -28,8 +24,12 @@ a {
 }
 
 .btn {
-    text-decoration: none;
-    color: var(--text);
+    width: 200px;
+    height: 50px;
+    background-color: var(--accent);
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
 }
 
 #index-content {
@@ -42,5 +42,21 @@ a {
     text-align: center;
     width: 80vw;
     height: 50vh;
-    background-color: red;
+    background-color: var(--card);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 20px;
+}
+
+#index-header {
+    margin-bottom: 2.5%;
+}
+
+#index-options {
+    width: 50%;
+    height: 20%;
+}
+
+#player-select-link {
+    width: 200px;
+    height: 75px;
 }
