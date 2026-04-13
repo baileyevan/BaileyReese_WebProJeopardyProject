@@ -5,10 +5,18 @@ session_start();
 // Debugging: View POST data
 //var_dump($_POST);
 
+//echo time();
+
 
 // Handle play button
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["play"])) {
     header("Location: ./startGame.php");
+    exit;
+}
+
+// Handle register button
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["register"])) {
+    header("Location: ../register/register.php");
     exit;
 }
 
@@ -92,6 +100,7 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Science Jeopardy - Player Select</title>
+    <link rel="stylesheet" href="../../css/common.css">
     <link rel="stylesheet" href="../../css/playerSelect.css">
     
 </head>
@@ -156,9 +165,7 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
 
                 <?php else: ?>
 
-                    <div class="btn inv">
-                        <a href="../register/register.php" class="inv">REGISTER A USER</a>
-                    </div>
+                    <input class="btn inv" type="submit" name="register" value="REGISTER A USER">
                     <input class="btn inv" type="submit" name="confirm" value="CONFIRM">
 
                 <?php endif; ?>

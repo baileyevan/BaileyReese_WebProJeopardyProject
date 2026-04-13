@@ -4,32 +4,8 @@
     --accent: #F6C445;
     --text: #EAF2FF;
     --muted: #A7B4C7;
-}
-
-body,
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    color: var(--text);
-    background-color: var(--bg);
-}
-
-a {
-    text-decoration: none;
-    color: var(--text);
-}
-
-.btn {
-    width: 200px;
-    height: 50px;
-    background-color: var(--accent);
-    border: 1px solid black;
-    border-radius: 10px;
-    color: white;
+    --player-1: rgb(98, 29, 235);
+    --player-2: rgb(196, 46, 46);
 }
 
 #index-content {

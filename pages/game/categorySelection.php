@@ -1,65 +1,13 @@
 <?php
 session_start();
 
-// Restore session from cookie 
-if (!isset($_SESSION["username"]) && isset($_COOKIE["username"])) {
-    $_SESSION["username"] = $_COOKIE["username"];
-}
-
-// Define login state
-$loggedIn = isset($_SESSION["username"]);
-
-if (!$loggedIn) {
-    header("Location: ../login/login.php");
+if(!isset($_SESSION["player1Name"]) || !isset($_SESSION["player2Name"])) {
+    header("Location: ./playerSelect.php");
     exit;
 }
 
-// Load categories
-$jsonString = file_get_contents('../../databases/questions.json');
-$data = json_decode($jsonString, true);
 
-$allCategories = [];
-foreach ($data['categories'] as $category) {
-    $allCategories[] = $category['name'];
-}
 
-// Shuffle pool
-shuffle($allCategories);
-
-// Default values
-$currentCategories = [];
-$rerollsRemaining = 3;
-
-// HANDLE FORM SUBMISSION
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $currentCategories = $_POST["currentCategories"];
-    $selected = $_POST["selectedCategories"] ?? [];
-    $rerollsRemaining = (int)$_POST["rerollsRemaining"];
-
-    // Only reroll if rerolls left
-    if ($rerollsRemaining > 0) {
-
-        $newCategories = [];
-
-        foreach ($currentCategories as $cat) {
-            if (in_array($cat, $selected)) {
-                // Keep selected
-                $newCategories[] = $cat;
-            } else {
-                // Reroll (duplicates allowed)
-                $newCategories[] = $allCategories[array_rand($allCategories)];
-            }
-        }
-
-        $currentCategories = $newCategories;
-        $rerollsRemaining--;
-    }
-
-} else {
-    // First load, pick 5 random categories
-    $currentCategories = array_slice($allCategories, 0, 5);
-}
 ?>
 
 <!DOCTYPE html>
