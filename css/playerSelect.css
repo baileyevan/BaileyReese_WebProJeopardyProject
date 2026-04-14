@@ -109,6 +109,10 @@ form {
     color: var(--text);
 }
 
+.cb {
+    margin-top: 6px;
+}
+
 #player-select-controls {
     height: fit-content;
     width: 60%;

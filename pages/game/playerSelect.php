@@ -123,7 +123,7 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
                         <input type="password" id="player1Password" name="player1Password" placeholder="Player 1 Password..." >
                         <div class="player-remember-container">
                             <pre><label class="remember-label" for="rememberPlayer1">Remember me</label></pre>
-                            <input type="checkbox" class="" id="rememberPlayer1" name="rememberPlayer1">
+                            <input type="checkbox" class="cb" style="accent-color: rgb(196, 46, 46);" id="rememberPlayer1" name="rememberPlayer1">
                         </div>
 
                     <?php endif; ?>
@@ -141,7 +141,7 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
                         <input type="password" id="player2Password" name="player2Password" placeholder="Player 2 Password..." >
                         <div class="player-remember-container">
                             <pre><label for="rememberPlayer2">Remember me</label></pre>
-                            <input type="checkbox" class="" id="rememberPlayer2" name="rememberPlayer2" >
+                            <input type="checkbox" class="cb" style="accent-color: rgb(98, 29, 235);" id="rememberPlayer2" name="rememberPlayer2" >
                         </div>
                     <?php endif; ?>
                     

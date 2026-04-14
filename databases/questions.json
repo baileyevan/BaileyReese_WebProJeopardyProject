@@ -2,101 +2,253 @@
     "categories": [{
             "name": "Algorithms",
             "questions": [
-                { "id": 1, "value": 100, "difficulty": 1, "category": "Algorithms", "question": "This simple sorting algorithm repeatedly steps through a list, compares adjacent elements, and swaps them if they are in the wrong order.", "answer": "What is Bubble Sort?" },
-                { "id": 2, "value": 200, "difficulty": 1, "category": "Algorithms", "question": "This algorithm finds the shortest path between nodes in a graph.", "answer": "What is Dijkstra's algorithm?" },
-                { "id": 3, "value": 300, "difficulty": 2, "category": "Algorithms", "question": "This divide-and-conquer sorting algorithm uses a pivot.", "answer": "What is Quicksort?" },
-                { "id": 4, "value": 400, "difficulty": 3, "category": "Algorithms", "question": "This string-searching algorithm uses a failure function.", "answer": "What is KMP?" },
-                { "id": 5, "value": 500, "difficulty": 3, "category": "Algorithms", "question": "This algorithm finds maximum flow in a network.", "answer": "What is Ford-Fulkerson?" }
+                { "id": 1, "value": 100, "difficulty": 1, "category": "Algorithms", "question": "This sorting algorithm swaps adjacent elements repeatedly.", "answer": "What is Bubble Sort?" },
+                { "id": 2, "value": 100, "difficulty": 1, "category": "Algorithms", "question": "This search algorithm splits data in half.", "answer": "What is Binary Search?" },
+                { "id": 3, "value": 100, "difficulty": 1, "category": "Algorithms", "question": "This traversal visits nodes level by level.", "answer": "What is BFS?" },
+                { "id": 4, "value": 100, "difficulty": 1, "category": "Algorithms", "question": "This traversal explores deep before wide.", "answer": "What is DFS?" },
+                { "id": 5, "value": 100, "difficulty": 1, "category": "Algorithms", "question": "This search checks elements one by one.", "answer": "What is Linear Search?" },
+
+                { "id": 6, "value": 200, "difficulty": 2, "category": "Algorithms", "question": "This divide-and-conquer sorting uses merging.", "answer": "What is Merge Sort?" },
+                { "id": 7, "value": 200, "difficulty": 2, "category": "Algorithms", "question": "This sorting uses a pivot element.", "answer": "What is Quicksort?" },
+                { "id": 8, "value": 200, "difficulty": 2, "category": "Algorithms", "question": "This algorithm uses a heap structure.", "answer": "What is Heap Sort?" },
+                { "id": 9, "value": 200, "difficulty": 2, "category": "Algorithms", "question": "This finds longest common subsequence.", "answer": "What is LCS?" },
+                { "id": 10, "value": 200, "difficulty": 2, "category": "Algorithms", "question": "This finds shortest paths in graphs.", "answer": "What is Dijkstra's Algorithm?" },
+
+                { "id": 11, "value": 300, "difficulty": 3, "category": "Algorithms", "question": "This string matching uses a prefix table.", "answer": "What is KMP?" },
+                { "id": 12, "value": 300, "difficulty": 3, "category": "Algorithms", "question": "This computes all-pairs shortest paths.", "answer": "What is Floyd-Warshall?" },
+                { "id": 13, "value": 300, "difficulty": 3, "category": "Algorithms", "question": "This computes max flow in a network.", "answer": "What is Ford-Fulkerson?" },
+                { "id": 14, "value": 300, "difficulty": 3, "category": "Algorithms", "question": "This improves Ford-Fulkerson with BFS.", "answer": "What is Edmonds-Karp?" },
+                { "id": 15, "value": 300, "difficulty": 3, "category": "Algorithms", "question": "This represents suffixes of a string.", "answer": "What is a Suffix Tree?" }
             ]
         },
+
         {
-            "name": "Web Development",
+            "name": "Computer Architecture",
             "questions": [
-                { "id": 6, "value": 100, "difficulty": 1, "category": "Web Development", "question": "This markup language is used for web pages.", "answer": "What is HTML?" },
-                { "id": 7, "value": 200, "difficulty": 1, "category": "Web Development", "question": "Popular CSS framework by Twitter.", "answer": "What is Bootstrap?" },
-                { "id": 8, "value": 300, "difficulty": 2, "category": "Web Development", "question": "JS runtime on server.", "answer": "What is Node.js?" },
-                { "id": 9, "value": 400, "difficulty": 3, "category": "Web Development", "question": "HTTP status Not Found.", "answer": "What is 404?" },
-                { "id": 10, "value": 500, "difficulty": 3, "category": "Web Development", "question": "Prevents XSS attacks.", "answer": "What is CSP?" }
+                { "id": 16, "value": 100, "difficulty": 1, "category": "Computer Architecture", "question": "This is the brain of the computer.", "answer": "What is the CPU?" },
+                { "id": 17, "value": 100, "difficulty": 1, "category": "Computer Architecture", "question": "This stores temporary data.", "answer": "What is RAM?" },
+                { "id": 18, "value": 100, "difficulty": 1, "category": "Computer Architecture", "question": "These are binary units of data.", "answer": "What are bits?" },
+                { "id": 19, "value": 100, "difficulty": 1, "category": "Computer Architecture", "question": "This performs arithmetic operations.", "answer": "What is the ALU?" },
+                { "id": 20, "value": 100, "difficulty": 1, "category": "Computer Architecture", "question": "This is the instruction execution cycle.", "answer": "What is Fetch-Decode-Execute?" },
+
+                { "id": 21, "value": 200, "difficulty": 2, "category": "Computer Architecture", "question": "This stores frequently used data.", "answer": "What is Cache?" },
+                { "id": 22, "value": 200, "difficulty": 2, "category": "Computer Architecture", "question": "This improves CPU performance via overlap.", "answer": "What is Pipelining?" },
+                { "id": 23, "value": 200, "difficulty": 2, "category": "Computer Architecture", "question": "This is shared communication path.", "answer": "What is a Bus?" },
+                { "id": 24, "value": 200, "difficulty": 2, "category": "Computer Architecture", "question": "This allows memory abstraction.", "answer": "What is Virtual Memory?" },
+                { "id": 25, "value": 200, "difficulty": 2, "category": "Computer Architecture", "question": "This improves instruction throughput.", "answer": "What is Instruction-Level Parallelism?" },
+
+                { "id": 26, "value": 300, "difficulty": 3, "category": "Computer Architecture", "question": "This resolves pipeline hazards.", "answer": "What is Forwarding?" },
+                { "id": 27, "value": 300, "difficulty": 3, "category": "Computer Architecture", "question": "This predicts branch execution.", "answer": "What is Branch Prediction?" },
+                { "id": 28, "value": 300, "difficulty": 3, "category": "Computer Architecture", "question": "This is an out-of-order execution algorithm.", "answer": "What is Tomasulo's Algorithm?" },
+                { "id": 29, "value": 300, "difficulty": 3, "category": "Computer Architecture", "question": "This ensures cache consistency.", "answer": "What is MESI Protocol?" },
+                { "id": 30, "value": 300, "difficulty": 3, "category": "Computer Architecture", "question": "This reduces memory latency.", "answer": "What is Prefetching?" }
             ]
         },
-        {
-            "name": "Artificial Intelligence",
-            "questions": [
-                { "id": 11, "value": 100, "difficulty": 1, "category": "Artificial Intelligence", "question": "AI that learns from data.", "answer": "What is Machine Learning?" },
-                { "id": 12, "value": 200, "difficulty": 1, "category": "Artificial Intelligence", "question": "Uses labeled data.", "answer": "What is Supervised Learning?" },
-                { "id": 13, "value": 300, "difficulty": 2, "category": "Artificial Intelligence", "question": "Handles sequential data.", "answer": "What is an RNN?" },
-                { "id": 14, "value": 400, "difficulty": 3, "category": "Artificial Intelligence", "question": "Gradient-based training.", "answer": "What is Backpropagation?" },
-                { "id": 15, "value": 500, "difficulty": 3, "category": "Artificial Intelligence", "question": "Generator vs discriminator.", "answer": "What is a GAN?" }
-            ]
-        },
-        {
-            "name": "Databases",
-            "questions": [
-                { "id": 16, "value": 100, "difficulty": 1, "category": "Databases", "question": "Language for relational DBs.", "answer": "What is SQL?" },
-                { "id": 17, "value": 200, "difficulty": 1, "category": "Databases", "question": "Atomicity, Consistency, Isolation, Durability.", "answer": "What is ACID?" },
-                { "id": 18, "value": 300, "difficulty": 2, "category": "Databases", "question": "Fast key-value DB.", "answer": "What is a key-value store?" },
-                { "id": 19, "value": 400, "difficulty": 3, "category": "Databases", "question": "Reduces redundancy.", "answer": "What is Normalization?" },
-                { "id": 20, "value": 500, "difficulty": 3, "category": "Databases", "question": "Timestamp concurrency.", "answer": "What is Timestamp Ordering?" }
-            ]
-        },
-        {
-            "name": "Programming Languages",
-            "questions": [
-                { "id": 21, "value": 100, "difficulty": 1, "category": "Programming Languages", "question": "Beginner-friendly interpreted language.", "answer": "What is Python?" },
-                { "id": 22, "value": 200, "difficulty": 1, "category": "Programming Languages", "question": "Extension of C with OOP.", "answer": "What is C++?" },
-                { "id": 23, "value": 300, "difficulty": 2, "category": "Programming Languages", "question": "Lisp dialect on JVM.", "answer": "What is Clojure?" },
-                { "id": 24, "value": 400, "difficulty": 3, "category": "Programming Languages", "question": "Rust borrowing system.", "answer": "What is a reference?" },
-                { "id": 25, "value": 500, "difficulty": 3, "category": "Programming Languages", "question": "No side effects paradigm.", "answer": "What is functional programming?" }
-            ]
-        },
-        {
-            "name": "Operating Systems",
-            "questions": [
-                { "id": 26, "value": 100, "difficulty": 1, "category": "Operating Systems", "question": "Core OS component.", "answer": "What is the Kernel?" },
-                { "id": 27, "value": 200, "difficulty": 1, "category": "Operating Systems", "question": "Open-source OS.", "answer": "What is Linux?" },
-                { "id": 28, "value": 300, "difficulty": 2, "category": "Operating Systems", "question": "Time-slice scheduling.", "answer": "What is Round Robin?" },
-                { "id": 29, "value": 400, "difficulty": 3, "category": "Operating Systems", "question": "Deadlock condition.", "answer": "What is Hold and Wait?" },
-                { "id": 30, "value": 500, "difficulty": 3, "category": "Operating Systems", "question": "Paging + segmentation.", "answer": "What is Segmented Paging?" }
-            ]
-        },
-        {
-            "name": "Computer Networks",
-            "questions": [
-                { "id": 31, "value": 100, "difficulty": 1, "category": "Computer Networks", "question": "Internet packet protocol.", "answer": "What is IP?" },
-                { "id": 32, "value": 200, "difficulty": 1, "category": "Computer Networks", "question": "Forwards packets.", "answer": "What is a Router?" },
-                { "id": 33, "value": 300, "difficulty": 2, "category": "Computer Networks", "question": "Reliable protocol.", "answer": "What is TCP?" },
-                { "id": 34, "value": 400, "difficulty": 3, "category": "Computer Networks", "question": "Port NAT.", "answer": "What is PAT?" },
-                { "id": 35, "value": 500, "difficulty": 3, "category": "Computer Networks", "question": "Link-state routing.", "answer": "What is OSPF?" }
-            ]
-        },
-        {
-            "name": "Cybersecurity",
-            "questions": [
-                { "id": 36, "value": 100, "difficulty": 1, "category": "Cybersecurity", "question": "Malware disguised as legit.", "answer": "What is a Trojan?" },
-                { "id": 37, "value": 200, "difficulty": 1, "category": "Cybersecurity", "question": "Fake emails attack.", "answer": "What is Phishing?" },
-                { "id": 38, "value": 300, "difficulty": 2, "category": "Cybersecurity", "question": "256-bit hash.", "answer": "What is SHA-256?" },
-                { "id": 39, "value": 400, "difficulty": 3, "category": "Cybersecurity", "question": "Top OWASP vuln.", "answer": "What is XSS?" },
-                { "id": 40, "value": 500, "difficulty": 3, "category": "Cybersecurity", "question": "RSA timing attack.", "answer": "What is a timing attack?" }
-            ]
-        },
-        {
-            "name": "Software Engineering",
-            "questions": [
-                { "id": 41, "value": 100, "difficulty": 1, "category": "Software Engineering", "question": "Version control system.", "answer": "What is Git?" },
-                { "id": 42, "value": 200, "difficulty": 1, "category": "Software Engineering", "question": "Sprint-based dev.", "answer": "What is Agile?" },
-                { "id": 43, "value": 300, "difficulty": 2, "category": "Software Engineering", "question": "SOLID 'I'.", "answer": "What is ISP?" },
-                { "id": 44, "value": 400, "difficulty": 3, "category": "Software Engineering", "question": "Simplifies subsystem.", "answer": "What is Facade?" },
-                { "id": 45, "value": 500, "difficulty": 3, "category": "Software Engineering", "question": "Effort estimation model.", "answer": "What is COCOMO?" }
-            ]
-        },
+
         {
             "name": "Data Structures",
             "questions": [
-                { "id": 46, "value": 100, "difficulty": 1, "category": "Data Structures", "question": "LIFO structure.", "answer": "What is a Stack?" },
-                { "id": 47, "value": 200, "difficulty": 1, "category": "Data Structures", "question": "Hierarchical structure.", "answer": "What is a Tree?" },
-                { "id": 48, "value": 300, "difficulty": 2, "category": "Data Structures", "question": "Balanced BST with colors.", "answer": "What is a Red-Black Tree?" },
-                { "id": 49, "value": 400, "difficulty": 3, "category": "Data Structures", "question": "Min/max structure.", "answer": "What is a Priority Queue?" },
-                { "id": 50, "value": 500, "difficulty": 3, "category": "Data Structures", "question": "Probabilistic membership.", "answer": "What is a Bloom Filter?" }
+                { "id": 31, "value": 100, "difficulty": 1, "category": "Data Structures", "question": "This structure uses LIFO order.", "answer": "What is a Stack?" },
+                { "id": 32, "value": 100, "difficulty": 1, "category": "Data Structures", "question": "This structure uses FIFO order.", "answer": "What is a Queue?" },
+                { "id": 33, "value": 100, "difficulty": 1, "category": "Data Structures", "question": "This structure is hierarchical.", "answer": "What is a Tree?" },
+                { "id": 34, "value": 100, "difficulty": 1, "category": "Data Structures", "question": "This stores key-value pairs.", "answer": "What is a Hash Table?" },
+                { "id": 35, "value": 100, "difficulty": 1, "category": "Data Structures", "question": "This is a resizable array.", "answer": "What is an ArrayList?" },
+
+                { "id": 36, "value": 200, "difficulty": 2, "category": "Data Structures", "question": "This is a self-balancing BST.", "answer": "What is an AVL Tree?" },
+                { "id": 37, "value": 200, "difficulty": 2, "category": "Data Structures", "question": "This structure prioritizes elements.", "answer": "What is a Heap?" },
+                { "id": 38, "value": 200, "difficulty": 2, "category": "Data Structures", "question": "This represents graph connections.", "answer": "What is an Adjacency List?" },
+                { "id": 39, "value": 200, "difficulty": 2, "category": "Data Structures", "question": "This tracks disjoint sets.", "answer": "What is Union-Find?" },
+                { "id": 40, "value": 200, "difficulty": 2, "category": "Data Structures", "question": "This is tree traversal in left-root-right order.", "answer": "What is Inorder Traversal?" },
+
+                { "id": 41, "value": 300, "difficulty": 3, "category": "Data Structures", "question": "This uses red and black nodes.", "answer": "What is a Red-Black Tree?" },
+                { "id": 42, "value": 300, "difficulty": 3, "category": "Data Structures", "question": "This probabilistic structure checks membership.", "answer": "What is a Bloom Filter?" },
+                { "id": 43, "value": 300, "difficulty": 3, "category": "Data Structures", "question": "This handles range queries efficiently.", "answer": "What is a Segment Tree?" },
+                { "id": 44, "value": 300, "difficulty": 3, "category": "Data Structures", "question": "This stores prefixes of strings.", "answer": "What is a Trie?" },
+                { "id": 45, "value": 300, "difficulty": 3, "category": "Data Structures", "question": "This supports prefix sums efficiently.", "answer": "What is a Fenwick Tree?" }
+            ]
+        },
+
+        {
+            "name": "Web Development",
+            "questions": [
+                { "id": 46, "value": 100, "difficulty": 1, "category": "Web Development", "question": "This is the structure of web pages.", "answer": "What is HTML?" },
+                { "id": 47, "value": 100, "difficulty": 1, "category": "Web Development", "question": "This styles web pages.", "answer": "What is CSS?" },
+                { "id": 48, "value": 100, "difficulty": 1, "category": "Web Development", "question": "This makes pages interactive.", "answer": "What is JavaScript?" },
+                { "id": 49, "value": 100, "difficulty": 1, "category": "Web Development", "question": "This protocol powers the web.", "answer": "What is HTTP?" },
+                { "id": 50, "value": 100, "difficulty": 1, "category": "Web Development", "question": "This is the structure of the DOM.", "answer": "What is the Document Object Model?" },
+
+                { "id": 51, "value": 200, "difficulty": 2, "category": "Web Development", "question": "This runtime executes JS on servers.", "answer": "What is Node.js?" },
+                { "id": 52, "value": 200, "difficulty": 2, "category": "Web Development", "question": "This framework simplifies CSS.", "answer": "What is Bootstrap?" },
+                { "id": 53, "value": 200, "difficulty": 2, "category": "Web Development", "question": "This architectural style uses endpoints.", "answer": "What is REST API?" },
+                { "id": 54, "value": 200, "difficulty": 2, "category": "Web Development", "question": "This format is used for APIs.", "answer": "What is JSON?" },
+                { "id": 55, "value": 200, "difficulty": 2, "category": "Web Development", "question": "This improves mobile responsiveness.", "answer": "What is responsive design?" },
+
+                { "id": 56, "value": 300, "difficulty": 3, "category": "Web Development", "question": "This prevents XSS attacks.", "answer": "What is Content Security Policy?" },
+                { "id": 57, "value": 300, "difficulty": 3, "category": "Web Development", "question": "This prevents CSRF attacks.", "answer": "What is CSRF token?" },
+                { "id": 58, "value": 300, "difficulty": 3, "category": "Web Development", "question": "This enforces secure authentication.", "answer": "What is OAuth?" },
+                { "id": 59, "value": 300, "difficulty": 3, "category": "Web Development", "question": "This improves performance via caching.", "answer": "What is CDN?" },
+                { "id": 60, "value": 300, "difficulty": 3, "category": "Web Development", "question": "This reduces page load time.", "answer": "What is minification?" }
+            ]
+        },
+
+        {
+            "name": "Artificial Intelligence",
+            "questions": [
+                { "id": 61, "value": 100, "difficulty": 1, "category": "Artificial Intelligence", "question": "This learns from data.", "answer": "What is Machine Learning?" },
+                { "id": 62, "value": 100, "difficulty": 1, "category": "Artificial Intelligence", "question": "This uses labeled data.", "answer": "What is Supervised Learning?" },
+                { "id": 63, "value": 100, "difficulty": 1, "category": "Artificial Intelligence", "question": "This uses unlabeled data.", "answer": "What is Unsupervised Learning?" },
+                { "id": 64, "value": 100, "difficulty": 1, "category": "Artificial Intelligence", "question": "This predicts continuous values.", "answer": "What is Regression?" },
+                { "id": 65, "value": 100, "difficulty": 1, "category": "Artificial Intelligence", "question": "This predicts categories.", "answer": "What is Classification?" },
+
+                { "id": 66, "value": 200, "difficulty": 2, "category": "Artificial Intelligence", "question": "This model processes sequences.", "answer": "What is an RNN?" },
+                { "id": 67, "value": 200, "difficulty": 2, "category": "Artificial Intelligence", "question": "This model processes images.", "answer": "What is a CNN?" },
+                { "id": 68, "value": 200, "difficulty": 2, "category": "Artificial Intelligence", "question": "This optimizes model weights.", "answer": "What is Gradient Descent?" },
+                { "id": 69, "value": 200, "difficulty": 2, "category": "Artificial Intelligence", "question": "This measures error.", "answer": "What is Loss Function?" },
+                { "id": 70, "value": 200, "difficulty": 2, "category": "Artificial Intelligence", "question": "This prevents overfitting.", "answer": "What is Regularization?" },
+
+                { "id": 71, "value": 300, "difficulty": 3, "category": "Artificial Intelligence", "question": "This adjusts weights in neural networks.", "answer": "What is Backpropagation?" },
+                { "id": 72, "value": 300, "difficulty": 3, "category": "Artificial Intelligence", "question": "This generates fake data.", "answer": "What is a GAN?" },
+                { "id": 73, "value": 300, "difficulty": 3, "category": "Artificial Intelligence", "question": "This uses rewards and penalties.", "answer": "What is Reinforcement Learning?" },
+                { "id": 74, "value": 300, "difficulty": 3, "category": "Artificial Intelligence", "question": "This architecture powers modern LLMs.", "answer": "What is a Transformer?" },
+                { "id": 75, "value": 300, "difficulty": 3, "category": "Artificial Intelligence", "question": "This happens when model fits noise.", "answer": "What is Overfitting?" }
+            ]
+        },
+
+        {
+            "name": "Databases",
+            "questions": [
+                { "id": 76, "value": 100, "difficulty": 1, "category": "Databases", "question": "This language queries relational databases.", "answer": "What is SQL?" },
+                { "id": 77, "value": 100, "difficulty": 1, "category": "Databases", "question": "This ensures atomic transactions.", "answer": "What is ACID?" },
+                { "id": 78, "value": 100, "difficulty": 1, "category": "Databases", "question": "This uniquely identifies rows.", "answer": "What is a Primary Key?" },
+                { "id": 79, "value": 100, "difficulty": 1, "category": "Databases", "question": "This links tables.", "answer": "What is a Foreign Key?" },
+                { "id": 80, "value": 100, "difficulty": 1, "category": "Databases", "question": "This improves query speed.", "answer": "What is an Index?" },
+
+                { "id": 81, "value": 200, "difficulty": 2, "category": "Databases", "question": "This removes redundancy.", "answer": "What is Normalization?" },
+                { "id": 82, "value": 200, "difficulty": 2, "category": "Databases", "question": "This joins tables.", "answer": "What is a Join?" },
+                { "id": 83, "value": 200, "difficulty": 2, "category": "Databases", "question": "This model represents entities.", "answer": "What is ER Model?" },
+                { "id": 84, "value": 200, "difficulty": 2, "category": "Databases", "question": "This type of DB is non-relational.", "answer": "What is NoSQL?" },
+                { "id": 85, "value": 200, "difficulty": 2, "category": "Databases", "question": "This ensures consistency in transactions.", "answer": "What is Isolation?" },
+
+                { "id": 86, "value": 300, "difficulty": 3, "category": "Databases", "question": "This splits large databases.", "answer": "What is Sharding?" },
+                { "id": 87, "value": 300, "difficulty": 3, "category": "Databases", "question": "This duplicates data for reliability.", "answer": "What is Replication?" },
+                { "id": 88, "value": 300, "difficulty": 3, "category": "Databases", "question": "This causes transaction blocking.", "answer": "What is Deadlock?" },
+                { "id": 89, "value": 300, "difficulty": 3, "category": "Databases", "question": "This is a distributed systems theorem.", "answer": "What is CAP Theorem?" },
+                { "id": 90, "value": 300, "difficulty": 3, "category": "Databases", "question": "This controls concurrent access.", "answer": "What is Concurrency Control?" }
+            ]
+        },
+
+        {
+            "name": "Programming Languages",
+            "questions": [
+                { "id": 91, "value": 100, "difficulty": 1, "category": "Programming Languages", "question": "This is a beginner-friendly language.", "answer": "What is Python?" },
+                { "id": 92, "value": 100, "difficulty": 1, "category": "Programming Languages", "question": "This is an extension of C.", "answer": "What is C++?" },
+                { "id": 93, "value": 100, "difficulty": 1, "category": "Programming Languages", "question": "This runs on the JVM.", "answer": "What is Java?" },
+                { "id": 94, "value": 100, "difficulty": 1, "category": "Programming Languages", "question": "This runs in the browser.", "answer": "What is JavaScript?" },
+                { "id": 95, "value": 100, "difficulty": 1, "category": "Programming Languages", "question": "This is compiled vs interpreted concept.", "answer": "What is compilation?" },
+
+                { "id": 96, "value": 200, "difficulty": 2, "category": "Programming Languages", "question": "This allows multiple function behaviors.", "answer": "What is Polymorphism?" },
+                { "id": 97, "value": 200, "difficulty": 2, "category": "Programming Languages", "question": "This manages memory automatically.", "answer": "What is Garbage Collection?" },
+                { "id": 98, "value": 200, "difficulty": 2, "category": "Programming Languages", "question": "This hides implementation details.", "answer": "What is Encapsulation?" },
+                { "id": 99, "value": 200, "difficulty": 2, "category": "Programming Languages", "question": "This runs Java programs.", "answer": "What is JVM?" },
+                { "id": 100, "value": 200, "difficulty": 2, "category": "Programming Languages", "question": "This defines variable type flexibility.", "answer": "What is dynamic typing?" },
+
+                { "id": 101, "value": 300, "difficulty": 3, "category": "Programming Languages", "question": "This enables function closures.", "answer": "What is a Closure?" },
+                { "id": 102, "value": 300, "difficulty": 3, "category": "Programming Languages", "question": "This ensures memory safety in Rust.", "answer": "What is Ownership?" },
+                { "id": 103, "value": 300, "difficulty": 3, "category": "Programming Languages", "question": "This is pure function-based programming.", "answer": "What is Functional Programming?" },
+                { "id": 104, "value": 300, "difficulty": 3, "category": "Programming Languages", "question": "This helps infer types automatically.", "answer": "What is Type Inference?" },
+                { "id": 105, "value": 300, "difficulty": 3, "category": "Programming Languages", "question": "This is Lisp-style abstraction system.", "answer": "What is a Macro?" }
+            ]
+        },
+
+        {
+            "name": "Operating Systems",
+            "questions": [
+                { "id": 106, "value": 100, "difficulty": 1, "category": "Operating Systems", "question": "This manages system resources.", "answer": "What is the Kernel?" },
+                { "id": 107, "value": 100, "difficulty": 1, "category": "Operating Systems", "question": "This is an executing program.", "answer": "What is a Process?" },
+                { "id": 108, "value": 100, "difficulty": 1, "category": "Operating Systems", "question": "This is lightweight process unit.", "answer": "What is a Thread?" },
+                { "id": 109, "value": 100, "difficulty": 1, "category": "Operating Systems", "question": "This manages files.", "answer": "What is a File System?" },
+                { "id": 110, "value": 100, "difficulty": 1, "category": "Operating Systems", "question": "This allocates memory.", "answer": "What is Memory Management?" },
+
+                { "id": 111, "value": 200, "difficulty": 2, "category": "Operating Systems", "question": "This scheduling uses time slices.", "answer": "What is Round Robin?" },
+                { "id": 112, "value": 200, "difficulty": 2, "category": "Operating Systems", "question": "This prevents deadlock.", "answer": "What is Resource Allocation?" },
+                { "id": 113, "value": 200, "difficulty": 2, "category": "Operating Systems", "question": "This splits memory into pages.", "answer": "What is Paging?" },
+                { "id": 114, "value": 200, "difficulty": 2, "category": "Operating Systems", "question": "This allows multitasking coordination.", "answer": "What is Scheduling?" },
+                { "id": 115, "value": 200, "difficulty": 2, "category": "Operating Systems", "question": "This is mutual exclusion mechanism.", "answer": "What is a Mutex?" },
+
+                { "id": 116, "value": 300, "difficulty": 3, "category": "Operating Systems", "question": "This prevents race conditions.", "answer": "What is Synchronization?" },
+                { "id": 117, "value": 300, "difficulty": 3, "category": "Operating Systems", "question": "This is a deadlock condition.", "answer": "What is Hold and Wait?" },
+                { "id": 118, "value": 300, "difficulty": 3, "category": "Operating Systems", "question": "This manages virtual memory translation.", "answer": "What is Paging with TLB?" },
+                { "id": 119, "value": 300, "difficulty": 3, "category": "Operating Systems", "question": "This prevents starvation.", "answer": "What is Fair Scheduling?" },
+                { "id": 120, "value": 300, "difficulty": 3, "category": "Operating Systems", "question": "This protects system resources.", "answer": "What is Memory Protection?" }
+            ]
+        },
+
+        {
+            "name": "Computer Networks",
+            "questions": [
+                { "id": 121, "value": 100, "difficulty": 1, "category": "Computer Networks", "question": "This protocol sends packets.", "answer": "What is IP?" },
+                { "id": 122, "value": 100, "difficulty": 1, "category": "Computer Networks", "question": "This ensures reliable transmission.", "answer": "What is TCP?" },
+                { "id": 123, "value": 100, "difficulty": 1, "category": "Computer Networks", "question": "This is connectionless protocol.", "answer": "What is UDP?" },
+                { "id": 124, "value": 100, "difficulty": 1, "category": "Computer Networks", "question": "This routes packets.", "answer": "What is a Router?" },
+                { "id": 125, "value": 100, "difficulty": 1, "category": "Computer Networks", "question": "This translates domain names.", "answer": "What is DNS?" },
+
+                { "id": 126, "value": 200, "difficulty": 2, "category": "Computer Networks", "question": "This is secure HTTP.", "answer": "What is HTTPS?" },
+                { "id": 127, "value": 200, "difficulty": 2, "category": "Computer Networks", "question": "This encrypts internet traffic.", "answer": "What is TLS?" },
+                { "id": 128, "value": 200, "difficulty": 2, "category": "Computer Networks", "question": "This translates private IPs.", "answer": "What is NAT?" },
+                { "id": 129, "value": 200, "difficulty": 2, "category": "Computer Networks", "question": "This defines network layers.", "answer": "What is the OSI Model?" },
+                { "id": 130, "value": 200, "difficulty": 2, "category": "Computer Networks", "question": "This protocol retrieves web pages.", "answer": "What is HTTP?" },
+
+                { "id": 131, "value": 300, "difficulty": 3, "category": "Computer Networks", "question": "This routing protocol is internet backbone.", "answer": "What is BGP?" },
+                { "id": 132, "value": 300, "difficulty": 3, "category": "Computer Networks", "question": "This uses link-state routing.", "answer": "What is OSPF?" },
+                { "id": 133, "value": 300, "difficulty": 3, "category": "Computer Networks", "question": "This manages congestion.", "answer": "What is Congestion Control?" },
+                { "id": 134, "value": 300, "difficulty": 3, "category": "Computer Networks", "question": "This divides networks into subnets.", "answer": "What is Subnetting?" },
+                { "id": 135, "value": 300, "difficulty": 3, "category": "Computer Networks", "question": "This blocks unauthorized traffic.", "answer": "What is a Firewall?" }
+            ]
+        },
+
+        {
+            "name": "Cybersecurity",
+            "questions": [
+                { "id": 136, "value": 100, "difficulty": 1, "category": "Cybersecurity", "question": "This is fake email attack.", "answer": "What is Phishing?" },
+                { "id": 137, "value": 100, "difficulty": 1, "category": "Cybersecurity", "question": "This is malicious software.", "answer": "What is Malware?" },
+                { "id": 138, "value": 100, "difficulty": 1, "category": "Cybersecurity", "question": "This disguises itself as legit software.", "answer": "What is a Trojan Horse?" },
+                { "id": 139, "value": 100, "difficulty": 1, "category": "Cybersecurity", "question": "This protects network traffic.", "answer": "What is a Firewall?" },
+                { "id": 140, "value": 100, "difficulty": 1, "category": "Cybersecurity", "question": "This scrambles data.", "answer": "What is Encryption?" },
+
+                { "id": 141, "value": 200, "difficulty": 2, "category": "Cybersecurity", "question": "This is one-way hashing.", "answer": "What is SHA-256?" },
+                { "id": 142, "value": 200, "difficulty": 2, "category": "Cybersecurity", "question": "This secures communication channels.", "answer": "What is TLS?" },
+                { "id": 143, "value": 200, "difficulty": 2, "category": "Cybersecurity", "question": "This uses public and private keys.", "answer": "What is Asymmetric Encryption?" },
+                { "id": 144, "value": 200, "difficulty": 2, "category": "Cybersecurity", "question": "This uses same key for encryption.", "answer": "What is Symmetric Encryption?" },
+                { "id": 145, "value": 200, "difficulty": 2, "category": "Cybersecurity", "question": "This verifies integrity.", "answer": "What is Hashing?" },
+
+                { "id": 146, "value": 300, "difficulty": 3, "category": "Cybersecurity", "question": "This is SQL-based injection attack.", "answer": "What is SQL Injection?" },
+                { "id": 147, "value": 300, "difficulty": 3, "category": "Cybersecurity", "question": "This executes malicious scripts in browsers.", "answer": "What is XSS?" },
+                { "id": 148, "value": 300, "difficulty": 3, "category": "Cybersecurity", "question": "This corrupts memory execution.", "answer": "What is Buffer Overflow?" },
+                { "id": 149, "value": 300, "difficulty": 3, "category": "Cybersecurity", "question": "This security model assumes breach.", "answer": "What is Zero Trust?" },
+                { "id": 150, "value": 300, "difficulty": 3, "category": "Cybersecurity", "question": "This locks data for ransom.", "answer": "What is Ransomware?" }
+            ]
+        },
+
+        {
+            "name": "Software Engineering",
+            "questions": [
+                { "id": 151, "value": 100, "difficulty": 1, "category": "Software Engineering", "question": "This tracks code versions.", "answer": "What is Git?" },
+                { "id": 152, "value": 100, "difficulty": 1, "category": "Software Engineering", "question": "This is iterative development method.", "answer": "What is Agile?" },
+                { "id": 153, "value": 100, "difficulty": 1, "category": "Software Engineering", "question": "This is sprint-based workflow.", "answer": "What is Scrum?" },
+                { "id": 154, "value": 100, "difficulty": 1, "category": "Software Engineering", "question": "This finds bugs.", "answer": "What is Testing?" },
+                { "id": 155, "value": 100, "difficulty": 1, "category": "Software Engineering", "question": "This improves code quality.", "answer": "What is Debugging?" },
+
+                { "id": 156, "value": 200, "difficulty": 2, "category": "Software Engineering", "question": "This enforces SOLID principles.", "answer": "What is Design Principles?" },
+                { "id": 157, "value": 200, "difficulty": 2, "category": "Software Engineering", "question": "This automates deployment.", "answer": "What is CI/CD?" },
+                { "id": 158, "value": 200, "difficulty": 2, "category": "Software Engineering", "question": "This tests individual units.", "answer": "What is Unit Testing?" },
+                { "id": 159, "value": 200, "difficulty": 2, "category": "Software Engineering", "question": "This visualizes system design.", "answer": "What is UML?" },
+                { "id": 160, "value": 200, "difficulty": 2, "category": "Software Engineering", "question": "This organizes software structure.", "answer": "What is MVC?" },
+
+                { "id": 161, "value": 300, "difficulty": 3, "category": "Software Engineering", "question": "This breaks apps into services.", "answer": "What is Microservices?" },
+                { "id": 162, "value": 300, "difficulty": 3, "category": "Software Engineering", "question": "This improves scalability.", "answer": "What is Horizontal Scaling?" },
+                { "id": 163, "value": 300, "difficulty": 3, "category": "Software Engineering", "question": "This automates infrastructure.", "answer": "What is DevOps?" },
+                { "id": 164, "value": 300, "difficulty": 3, "category": "Software Engineering", "question": "This improves code structure.", "answer": "What is Refactoring?" },
+                { "id": 165, "value": 300, "difficulty": 3, "category": "Software Engineering", "question": "This is monolith vs distributed approach.", "answer": "What is System Architecture?" }
             ]
         }
     ]

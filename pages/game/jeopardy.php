@@ -1,6 +1,15 @@
 <?php 
 session_start();
 
+if (empty($_SESSION["selectedCategories"])) {
+    header("Location: ./categorySelection.php");
+    exit;
+}
+
+$selectedCategories = $_SESSION["selectedCategories"] ?? [];
+
+print_r($selectedCategories);
+
 
 ?>
 
