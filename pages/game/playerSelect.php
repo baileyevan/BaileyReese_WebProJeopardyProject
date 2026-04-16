@@ -2,12 +2,6 @@
 
 session_start();
 
-// Debugging: View POST data
-//var_dump($_POST);
-
-//echo time();
-
-
 // Handle play button
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["play"])) {
     header("Location: ./startGame.php");
@@ -117,7 +111,7 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
                     <?php else: ?>
                         <h2>Player 1 Login...</h2>
                         <?php if (!empty($errorPlayer1)): ?>
-                            <p style="color:rgb(196, 46, 46);"><?php echo $errorPlayer1; ?></p>
+                            <p style="color:rgb(196, 46, 46); font-weight: 800;"><?php echo $errorPlayer1; ?></p>
                         <?php endif; ?>
                         <input type="text" id="player1Name" name="player1Name" placeholder="Player 1 Name..." >
                         <input type="password" id="player1Password" name="player1Password" placeholder="Player 1 Password..." >
@@ -135,7 +129,7 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
                     <?php else: ?>
                         <h2>Player 2 Login...</h2>
                         <?php if (!empty($errorPlayer2)): ?>
-                            <p style="color:rgb(98, 29, 235);"><?php echo $errorPlayer2; ?></p>
+                            <p style="color:rgb(98, 29, 235); font-weight: 800;"><?php echo $errorPlayer2; ?></p>
                         <?php endif; ?>
                         <input type="text" id="player2Name" name="player2Name" placeholder="Player 2 Name..." >
                         <input type="password" id="player2Password" name="player2Password" placeholder="Player 2 Password..." >

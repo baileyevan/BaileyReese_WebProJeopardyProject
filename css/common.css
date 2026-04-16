@@ -32,6 +32,12 @@ a {
     border: 1px solid black;
     border-radius: 10px;
     color: white;
+    opacity: .8;
+    animation-duration: 1s;
+}
+
+.btn:hover {
+    opacity: 1;
 }
 
 .fill {

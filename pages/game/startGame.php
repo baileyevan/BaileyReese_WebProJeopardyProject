@@ -5,47 +5,92 @@ session_start();
 if (!isset($_SESSION["player1Name"]) || !isset($_SESSION["player2Name"])) {
     header("Location: ./playerSelect.php");
     exit;
-};
+}
 
-// Check if the 2 users have an active game together
-$hasGame = false;
-
+// Load games
 $file = "../../databases/games.json";
 $games = json_decode(file_get_contents($file), true);
+
+if (!$games) {
+    $games = [];
+}
+
+// Get last game ID
+$lastGame = end($games);
+$lastGameId = $lastGame ? $lastGame["id"] : 0;
+
+$_SESSION["lastGameId"] = $lastGameId;
+
+// Check for active game
+$hasGame = false;
 $gameArr = null;
-foreach ($games as $game) {
-    if ($game["player1"] === $_SESSION["player1Name"] && $game["player2"] === $_SESSION["player2Name"] || $game["player1"] === $_SESSION["player2Name"] && $game["player2"] === $_SESSION["player1Name"] && !$game["isComplete"]) {
+
+foreach (array_reverse($games) as $g) { 
+
+    $samePlayers =
+        ($g["player1"] === $_SESSION["player1Name"] &&
+         $g["player2"] === $_SESSION["player2Name"]) ||
+        ($g["player1"] === $_SESSION["player2Name"] &&
+         $g["player2"] === $_SESSION["player1Name"]);
+
+    $isValidGame =
+        !$g["isComplete"] &&
+        !empty($g["selectedCategories"]); 
+
+    if ($samePlayers && $isValidGame) {
         $hasGame = true;
-        $gameArr = $game;
+        $gameArr = $g;
         break;
     }
 }
 
-// Debug: Print all game stats
-//echo print_r($gameArr);
+// =========================
+// NEW GAME
+// =========================
+if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["newGame"])) {
 
-// If starting new game take the user to the category selection
-if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["newGame"]) && $hasGame) {
-    header("Location: ./categorySelection.php");
+    $games = array_filter($games, function($g) {
+        return !(
+            !$g["isComplete"] &&
+            (
+                ($g["player1"] === $_SESSION["player1Name"] &&
+                 $g["player2"] === $_SESSION["player2Name"]) ||
+                ($g["player1"] === $_SESSION["player2Name"] &&
+                 $g["player2"] === $_SESSION["player1Name"])
+            )
+        );
+    });
+
+    $games = array_values($games); 
+
+
+
+    file_put_contents($file, json_encode($games, JSON_PRETTY_PRINT), LOCK_EX);
+
+    unset($_SESSION["gameStats"]);
+    unset($_SESSION["currentQuestion"]);
+    unset($_SESSION["currentCategory"]);
+    unset($_SESSION["answeredQuestions"]);
+    unset($_SESSION["currentCategories"]);
+    unset($_SESSION["selectedCategories"]);
+
+
+    header("Location: ./categorySelection.php?newGame=1");
     exit;
 }
 
-// If resuming the game then store the game data in the session
+// =========================
+// RESUME GAME
+// =========================
 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["resume"]) && $hasGame) {
-    $_SESSION['game'] = $gameArr;
+
+    $_SESSION["gameStats"] = $gameArr;
+
+    $_SESSION["selectedCategories"] = $gameArr["selectedCategories"];
+
     header("Location: ./jeopardy.php");
     exit;
 }
-
-
-
-// If starting a new game then go to the
-// category selection step
-if (isset($_SERVER['REQUEST_METHOD']) === "POST" && $_POST["newGame"]) {
-    header("Location: ./categorySelection.php");
-    exit;
-}
-
 ?>
 
 <!DOCTYPE html>

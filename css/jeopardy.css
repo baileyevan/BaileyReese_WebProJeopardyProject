@@ -1,0 +1,132 @@
+:root {
+    --bg: #0B1B3A;
+    --card: #122B52;
+    --accent: #F6C445;
+    --text: #EAF2FF;
+    --textAlt: #474747;
+    --muted: #A7B4C7;
+    --player-1: rgb(98, 29, 235);
+    --player-2: rgb(196, 46, 46);
+}
+
+#jeopardy-main-container {
+    width: 90vw;
+    height: 80vh;
+    margin: auto;
+    margin-top: 10vh;
+    background-color: var(--card);
+    border-radius: 20px;
+
+}
+
+#jeopardy-game-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 15vh;
+    width: 100%;
+
+}
+
+#jeopardy-board-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 5vh;
+}
+
+.category-card {
+    background-color: var(--bg);
+    width: 18%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 2%;
+
+}
+
+#players-container {
+    width: 60vw;
+    height: 20vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--bg);
+    margin-bottom: 5vh;
+    border-radius: 20px;
+
+}
+
+.players-stats-container {
+    width: 40%;
+    background-color: var(--card);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    border-radius: 20px;
+}
+
+#exit-game-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 25vw;
+    border-radius: 20px;
+    height: 12vh;
+    background-color: var(--bg);
+}
+
+#exit-game-btn {
+
+}
+
+
+
+/* Winner screen */
+#main-winner-container {
+    width: 60vw;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 10vh;
+    border-radius: 20px;
+    background-color: var(--card);
+}
+
+#winner-header {
+    height: 10vh;
+}
+
+#winner-display-container {
+    font-weight: 900;
+    font-size: 2rem;
+    margin-bottom: 5vh;
+}
+
+#score-display-container {
+    font-size: 1.2rem;
+    margin-bottom: 10vh;
+}
+
+#exit-game-btn-container-winner {
+    width: 35%;
+    height: 50%;
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+

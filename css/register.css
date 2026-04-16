@@ -1,0 +1,71 @@
+:root {
+    --bg: #0B1B3A;
+    --card: #122B52;
+    --accent: #F6C445;
+    --text: #EAF2FF;
+    --muted: #A7B4C7;
+    --player-1: rgb(98, 29, 235);
+    --player-2: rgb(196, 46, 46);
+}
+
+#register-container {
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;    
+    flex-direction: column;
+    text-align: center;
+    background-color: var(--card);
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 10vh;
+
+}
+
+#register-header {
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5vh;
+
+}
+
+#register-form {
+    width: 50%;
+    height: 60%;
+    border-radius: 20px;
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+input {
+    background-color: white;
+    color: black;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    height: 30px;
+    width: 80%;
+    font-weight: 600;
+    caret-color: transparent;
+    text-shadow: black;
+}
+
+input::placeholder {
+    text-align: center;
+}
+
+input[type="text"], input[type="password"] {
+    text-align: center;
+}
+
+.labels-for-input {
+    margin-bottom: 5vh;
+}
+
+.credential-container {
+
+}
