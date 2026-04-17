@@ -22,12 +22,21 @@ body {
     text-align: center;
 }
 
+/* Timer */
+#timer {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
 /* Flip card container */
 #flip-card-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 4vh;
+    margin-top: 2vh;
 }
 
 /* Flip card wrapper */
@@ -36,9 +45,10 @@ body {
     height: 55vh;
     perspective: 1200px;
     cursor: pointer;
+    position: relative;
 }
 
-/* Inner card */
+/* Inner faces */
 .flip-card>div {
     width: 100%;
     height: 100%;
@@ -54,7 +64,7 @@ body {
     align-items: center;
 }
 
-/* FRONT */
+/* Front */
 .flip-card-front {
     background-color: var(--card);
     transform: rotateY(0deg);
@@ -73,14 +83,14 @@ body {
     opacity: 0.6;
 }
 
-/* BACK */
+/* Back */
 .flip-card-back {
     background-color: var(--card);
     transform: rotateY(180deg);
     transition: transform 0.6s ease;
 }
 
-/* FLIPPED STATE */
+/* Flipped state */
 .flip-card.flipped .flip-card-front {
     transform: rotateY(-180deg);
 }

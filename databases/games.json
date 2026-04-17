@@ -103,19 +103,19 @@
         "id": 3,
         "player1": "lsiby1",
         "player2": "jsiby1",
-        "player1Score": 900,
-        "player1Difficulty": "MED",
+        "player1Score": 1400,
+        "player1Difficulty": "EASY",
         "player1AnswerHistory": [
-            true,
-            false,
-            false
+            0,
+            0,
+            1
         ],
-        "player2Score": 1200,
+        "player2Score": 2000,
         "player2Difficulty": "HARD",
         "player2AnswerHistory": [
-            true,
-            true,
-            false
+            1,
+            1,
+            1
         ],
         "selectedCategories": [
             "Data Structures",
@@ -124,10 +124,10 @@
             "Web Development",
             "Algorithms"
         ],
-        "category1Remaining": 4,
+        "category1Remaining": 0,
         "category2Remaining": 0,
-        "category3Remaining": 2,
-        "category4Remaining": 5,
+        "category3Remaining": 0,
+        "category4Remaining": 0,
         "category5Remaining": 0,
         "currentPlayersTurn": 1,
         "completedQuestionIds": [
@@ -144,9 +144,81 @@
             15,
             21,
             29,
-            30
+            30,
+            25,
+            54,
+            39,
+            35,
+            41,
+            24,
+            45,
+            51,
+            53,
+            58,
+            48
         ],
-        "isComplete": false,
-        "winner": null
+        "isComplete": true,
+        "winner": "jsiby1"
+    },
+    {
+        "id": 4,
+        "player1": "lsiby1",
+        "player2": "jsiby1",
+        "player1Score": 1300,
+        "player1Difficulty": "HARD",
+        "player1AnswerHistory": [
+            1,
+            0,
+            1
+        ],
+        "player2Score": 1100,
+        "player2Difficulty": "EASY",
+        "player2AnswerHistory": [
+            0,
+            1,
+            1
+        ],
+        "selectedCategories": [
+            "Software Engineering",
+            "Operating Systems",
+            "Computer Networks",
+            "Databases",
+            "Artificial Intelligence"
+        ],
+        "category1Remaining": 0,
+        "category2Remaining": 0,
+        "category3Remaining": 0,
+        "category4Remaining": 0,
+        "category5Remaining": 0,
+        "currentPlayersTurn": 1,
+        "completedQuestionIds": [
+            108,
+            63,
+            155,
+            61,
+            151,
+            62,
+            112,
+            77,
+            165,
+            64,
+            116,
+            70,
+            114,
+            131,
+            109,
+            86,
+            153,
+            88,
+            154,
+            81,
+            130,
+            124,
+            90,
+            125,
+            132
+        ],
+        "isComplete": true,
+        "winner": "lsiby1"
     }
 ]

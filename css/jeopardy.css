@@ -3,17 +3,32 @@
     --card: #122B52;
     --accent: #F6C445;
     --text: #EAF2FF;
-    --textAlt: #474747;
     --muted: #A7B4C7;
-    --player-1: rgb(98, 29, 235);
-    --player-2: rgb(196, 46, 46);
 }
 
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* Turn banner */
+#turn-banner {
+    width: 90vw;
+    margin: 3vh auto 0 auto;
+    padding: 12px;
+    text-align: center;
+    background-color: var(--accent);
+    color: var(--bg);
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+/* Main container */
 #jeopardy-main-container {
     width: 90vw;
     height: 80vh;
     margin: auto;
-    margin-top: 10vh;
+    margin-top: 4vh;
     background-color: var(--card);
     border-radius: 20px;
     padding: 2vh 2vw;
@@ -21,7 +36,7 @@
     flex-direction: column;
 }
 
-/* TOP BAR: PLAYERS + TITLE */
+/* Top bar */
 #top-bar-container {
     width: 100%;
     height: 18vh;
@@ -34,50 +49,36 @@
 #jeopardy-game-header {
     flex: 1;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
 }
 
-#jeopardy-game-header h1 {
-    margin: 0;
-}
-
-/* PLAYERS */
+/* Player stats */
 .players-stats-container {
     width: 22%;
     background-color: var(--bg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
     border-radius: 20px;
+    padding: 1vh;
+    text-align: center;
 }
 
-/* BOARD */
+/* Board */
 #jeopardy-board-container {
     flex: 1;
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    /* IMPORTANT: makes all columns equal height */
     justify-content: space-evenly;
-    margin-bottom: 3vh;
+    align-items: stretch;
 }
 
-/* CATEGORY COLUMN */
+/* Category column */
 .category-column {
     width: 18%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    /* consistent top alignment */
     gap: 1.5vh;
 }
 
-/* CATEGORY HEADER */
+/* Category header */
 .category-header {
     background-color: var(--bg);
     width: 100%;
@@ -85,42 +86,52 @@
     border-radius: 20px;
     padding: 10px;
     text-align: center;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
 }
 
+.category-complete-msg {
+    color: var(--muted);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
 
+/* Cards */
 .category-cards-row {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.5vh;
-    align-items: center;
 }
-
 
 .value-card {
     width: 100%;
     height: 8vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* EXIT BUTTON */
+/* Locked cards */
+.value-card.locked {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Exit button */
 #exit-game-btn-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    margin-top: 1vh;
     width: 25vw;
-    border-radius: 20px;
     height: 10vh;
     background-color: var(--bg);
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #exit-game-btn {
@@ -164,21 +175,4 @@
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-}
-
-/* Shared button style (from common.css, but safe if needed) */
-.btn {
-    background-color: var(--accent);
-    color: var(--bg);
-    padding: 10px 24px;
-    border-radius: 12px;
-    font-weight: bold;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: 0.15s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
 }
