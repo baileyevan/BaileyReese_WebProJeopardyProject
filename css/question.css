@@ -4,75 +4,109 @@
     --accent: #F6C445;
     --text: #EAF2FF;
     --muted: #A7B4C7;
-    --player-1: rgb(98, 29, 235);
-    --player-2: rgb(196, 46, 46);
 }
 
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+}
+
+/* Category title */
 #question-category-name-container {
     width: 100%;
-    height: 20vh;
+    height: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-bottom: 5vh;
-
 }
 
-#main-question-container {
-    width: 80vw;
-    height: 60vh;
-    margin: auto;
-    border-radius: 20px;
-    background-color: var(--card);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-#question-turn-contianer {
-    margin-top: 10vh;
-    margin-bottom: 5vh;
-
-}
-
-#question-container {
-    margin-bottom: 5vh;
-
-}
-
-#form-container {
-
-}
-
-#reveal-button-container {
-    margin-bottom: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-#wrong-right-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 30px;
+/* Flip card container */
+#flip-card-container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 4vh;
 }
 
-#reveal-button {
-    width: 180px;
-    height: 40px;
-    background-color: rgb(239, 96, 96);
-    border: 1px solid black;
-    border-radius: 10px;
-    color: white;
-    opacity: .8;
+/* Flip card wrapper */
+.flip-card {
+    width: 60vw;
+    height: 55vh;
+    perspective: 1200px;
+    cursor: pointer;
 }
 
-#reveal-button:hover {
-    opacity: 1.5;
+/* Inner card */
+.flip-card>div {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 3vh 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+/* FRONT */
+.flip-card-front {
+    background-color: var(--card);
+    transform: rotateY(0deg);
+    transition: transform 0.6s ease;
+}
+
+.flip-card-front .turn-label {
+    margin-top: 2vh;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.flip-card-front .flip-hint {
+    margin-top: 4vh;
+    font-size: 1rem;
+    opacity: 0.6;
+}
+
+/* BACK */
+.flip-card-back {
+    background-color: var(--card);
+    transform: rotateY(180deg);
+    transition: transform 0.6s ease;
+}
+
+/* FLIPPED STATE */
+.flip-card.flipped .flip-card-front {
+    transform: rotateY(-180deg);
+}
+
+.flip-card.flipped .flip-card-back {
+    transform: rotateY(0deg);
+}
+
+/* Buttons */
+.answer-buttons {
+    margin-top: 4vh;
+    display: flex;
+    gap: 40px;
+}
+
+.btn {
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}

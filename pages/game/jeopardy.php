@@ -107,27 +107,28 @@ if ($isGameOver && !$game["isComplete"]) {
 }
 
 // =========================
-// HANDLE CATEGORY CLICK
+// HANDLE CARD CLICK (CATEGORY + VALUE)
 // =========================
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["category"])) {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["card"])) {
 
-    $selectedCategory = $_POST["category"];
+    $cardData = explode("|", $_POST["card"]);
+    $selectedCategory = $cardData[0];
+    $selectedValue = (int)$cardData[1];
 
-    // store category for question.php
     $_SESSION["currentCategory"] = $selectedCategory;
+    $_SESSION["currentValue"] = $selectedValue;
 
     unset($_SESSION["currentQuestion"]);
 
-    // redirect to question page
     header("Location: ./question.php");
     exit;
 }
 
+// =========================
+// HANDLE EXIT GAME
+// =========================
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["exitGame"])) {
 
-    // =========================
-    // SAVE LATEST SESSION STATE TO JSON
-    // =========================
     $game = $_SESSION["gameStats"];
 
     $file = "../../databases/games.json";
@@ -143,15 +144,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["exitGame"])) {
 
     file_put_contents($file, json_encode($games, JSON_PRETTY_PRINT), LOCK_EX);
 
-    // =========================
-    // CLEAN SESSION
-    // =========================
     unset($_SESSION["gameStats"]);
     unset($_SESSION["currentQuestion"]);
     unset($_SESSION["currentCategory"]);
     unset($_SESSION["answeredQuestions"]);
     unset($_SESSION["currentCategories"]);
     unset($_SESSION["selectedCategories"]);
+    unset($_SESSION["currentValue"]);
 
     header("Location: ./playerSelect.php");
     exit;
@@ -171,7 +170,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["exitGame"])) {
 
 <?php if ($game["isComplete"]): ?>
 
-    <div class="bs" id="main-winner-container" style="text-align:center; padding:40px;">
+    <div class="bs" id="main-winner-container">
         <div id="winner-header">
             <h1>Game Over!</h1>
         </div>
@@ -197,8 +196,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["exitGame"])) {
     <div id="jeopardy-main-container" class="bs">
         <form method="post" style="width: 100%; height: 100%;">
 
-            <div id="jeopardy-game-header">
-                <h1>Computer Science Jeopardy</h1>
+            <!-- TOP: SCOREBOARD + TITLE -->
+            <div id="top-bar-container">
+                <div class="players-stats-container bs">
+                    <h2><?php echo $game["player1"] ?></h2>
+                    <h3>SCORE: <?php echo $game["player1Score"] ?></h3>
+                    <p>DIFFICULTY: <strong><?php echo $game["player1Difficulty"]; ?></strong></p>
+                </div>
+
+                <div id="jeopardy-game-header">
+                    <h1>Computer Science Jeopardy</h1>
+                </div>
+
+                <div class="players-stats-container bs">
+                    <h2><?php echo $game["player2"] ?></h2>
+                    <h3>SCORE: <?php echo $game["player2Score"] ?></h3>
+                    <p>DIFFICULTY: <strong><?php echo $game["player2Difficulty"]; ?></strong></p>
+                </div>
             </div>
 
             <!-- BOARD -->
@@ -207,40 +221,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["exitGame"])) {
                 <?php foreach ($selectedCategories as $index => $category): ?>
                     <?php
                     $remaining = $game["category" . ($index + 1) . "Remaining"];
+                    $values = [100, 200, 300];
                     ?>
 
-                    <div class="category-card bs">
+                    <div class="category-column">
 
-                        <input 
-                            type="submit" 
-                            name="category" 
-                            value="<?php echo $category; ?>" 
-                            class="btn"
-                            <?php echo ($remaining <= 0) ? "disabled style='opacity:0.4; cursor:not-allowed;'" : ""; ?>
-                        >
+                        <div class="category-header bs">
+                            <h2><?php echo htmlspecialchars($category); ?></h2>
+                            <p>REMAINING: <?php echo $remaining; ?> / 5</p>
+                        </div>
 
-                        <p>REMAINING: <?php echo $remaining; ?> / 5</p>
+                        <div class="category-cards-row">
+                            <?php foreach ($values as $value): ?>
+                                <button
+                                    type="submit"
+                                    name="card"
+                                    value="<?php echo htmlspecialchars($category) . '|' . $value; ?>"
+                                    class="value-card btn"
+                                    <?php echo ($remaining <= 0) ? "disabled style='opacity:0.4; cursor:not-allowed;'" : ""; ?>
+                                >
+                                    <?php echo "$" . $value; ?>
+                                </button>
+                            <?php endforeach; ?>
+                        </div>
 
                     </div>
 
                 <?php endforeach; ?>
-
-            </div>
-
-            <!-- PLAYERS -->
-            <div id="players-container">
-
-                <div class="players-stats-container bs">
-                    <h2><?php echo $game["player1"] ?></h2>
-                    <h3>SCORE: <?php echo $game["player1Score"] ?></h3>
-                    <p>DIFFICULTY: <strong><?php echo $game["player1Difficulty"]; ?></strong></p>
-                </div>
-
-                <div class="players-stats-container bs">
-                    <h2><?php echo $game["player2"] ?></h2>
-                    <h3>SCORE: <?php echo $game["player2Score"] ?></h3>
-                    <p>DIFFICULTY: <strong><?php echo $game["player2Difficulty"]; ?></strong></p>
-                </div>
 
             </div>
 
