@@ -1,1 +1,102 @@
-[]
+[
+    {
+        "id": 1,
+        "player1": "lsiby1",
+        "player2": "lsiby1",
+        "player1Score": 200,
+        "player1Difficulty": "MED",
+        "player1AnswerHistory": [
+            0,
+            true,
+            false
+        ],
+        "player2Score": 100,
+        "player2Difficulty": "MED",
+        "player2AnswerHistory": [
+            0,
+            0,
+            true
+        ],
+        "selectedCategories": [
+            "Programming Languages",
+            "Data Structures",
+            "Software Engineering",
+            "Web Development",
+            "Operating Systems"
+        ],
+        "category1Remaining": 4,
+        "category2Remaining": 5,
+        "category3Remaining": 5,
+        "category4Remaining": 4,
+        "category5Remaining": 4,
+        "currentPlayersTurn": 1,
+        "completedQuestionIds": [
+            99,
+            46,
+            114
+        ],
+        "isComplete": false,
+        "winner": null
+    },
+    {
+        "id": 2,
+        "player1": "lsiby1",
+        "player2": "jsiby1",
+        "player1Score": 2000,
+        "player1Difficulty": "HARD",
+        "player1AnswerHistory": [
+            true,
+            false,
+            true
+        ],
+        "player2Score": 1600,
+        "player2Difficulty": "HARD",
+        "player2AnswerHistory": [
+            false,
+            true,
+            true
+        ],
+        "selectedCategories": [
+            "Artificial Intelligence",
+            "Computer Architecture",
+            "Data Structures",
+            "Web Development",
+            "Cybersecurity"
+        ],
+        "category1Remaining": 0,
+        "category2Remaining": 0,
+        "category3Remaining": 0,
+        "category4Remaining": 0,
+        "category5Remaining": 0,
+        "currentPlayersTurn": 1,
+        "completedQuestionIds": [
+            40,
+            25,
+            66,
+            52,
+            147,
+            59,
+            28,
+            75,
+            45,
+            60,
+            42,
+            30,
+            71,
+            142,
+            56,
+            144,
+            39,
+            21,
+            68,
+            23,
+            37,
+            53,
+            73,
+            145,
+            146
+        ],
+        "isComplete": true,
+        "winner": "lsiby1"
+    }
+]
