@@ -250,6 +250,52 @@
                 { "id": 164, "value": 300, "difficulty": 3, "category": "Software Engineering", "question": "This improves code structure.", "answer": "What is Refactoring?" },
                 { "id": 165, "value": 300, "difficulty": 3, "category": "Software Engineering", "question": "This is monolith vs distributed approach.", "answer": "What is System Architecture?" }
             ]
+        },
+
+        {
+            "name": "Mobile App Development",
+            "questions": [
+                { "id": 165, "value": 100, "difficulty": 1, "category": "Mobile App Development", "question": "This OS powers most non‑Apple smartphones.", "answer": "What is Android?" },
+                { "id": 166, "value": 100, "difficulty": 1, "category": "Mobile App Development", "question": "This language is used for iOS development.", "answer": "What is Swift?" },
+                { "id": 167, "value": 100, "difficulty": 1, "category": "Mobile App Development", "question": "This file describes app metadata on Android.", "answer": "What is AndroidManifest.xml?" },
+                { "id": 168, "value": 100, "difficulty": 1, "category": "Mobile App Development", "question": "This UI toolkit is used in Flutter.", "answer": "What is the Widget system?" },
+                { "id": 169, "value": 100, "difficulty": 1, "category": "Mobile App Development", "question": "This store distributes iOS apps.", "answer": "What is the App Store?" },
+
+                { "id": 170, "value": 200, "difficulty": 2, "category": "Mobile App Development", "question": "This pattern separates UI, logic, and data.", "answer": "What is MVC?" },
+                { "id": 171, "value": 200, "difficulty": 2, "category": "Mobile App Development", "question": "This Android component displays a single screen.", "answer": "What is an Activity?" },
+                { "id": 172, "value": 200, "difficulty": 2, "category": "Mobile App Development", "question": "This Flutter tool manages state across widgets.", "answer": "What is Provider?" },
+                { "id": 173, "value": 200, "difficulty": 2, "category": "Mobile App Development", "question": "This file stores iOS UI layouts.", "answer": "What is a Storyboard?" },
+                { "id": 174, "value": 200, "difficulty": 2, "category": "Mobile App Development", "question": "This tool builds cross‑platform mobile apps using JavaScript.", "answer": "What is React Native?" },
+
+                { "id": 175, "value": 300, "difficulty": 3, "category": "Mobile App Development", "question": "This Android system optimizes background tasks.", "answer": "What is WorkManager?" },
+                { "id": 176, "value": 300, "difficulty": 3, "category": "Mobile App Development", "question": "This iOS feature manages memory automatically.", "answer": "What is ARC (Automatic Reference Counting)?" },
+                { "id": 177, "value": 300, "difficulty": 3, "category": "Mobile App Development", "question": "This Flutter engine renders UI using Skia.", "answer": "What is the Flutter Rendering Engine?" },
+                { "id": 178, "value": 300, "difficulty": 3, "category": "Mobile App Development", "question": "This architecture uses streams for reactive programming.", "answer": "What is BLoC?" },
+                { "id": 179, "value": 300, "difficulty": 3, "category": "Mobile App Development", "question": "This Android tool compiles Kotlin into optimized bytecode.", "answer": "What is the Kotlin Compiler?" }
+            ]
+        },
+
+        {
+            "name": "Cloud Computing",
+            "questions": [
+                { "id": 216, "value": 100, "difficulty": 1, "category": "Cloud Computing", "question": "This service provides virtual machines.", "answer": "What is IaaS?" },
+                { "id": 217, "value": 100, "difficulty": 1, "category": "Cloud Computing", "question": "This service hosts applications online.", "answer": "What is SaaS?" },
+                { "id": 218, "value": 100, "difficulty": 1, "category": "Cloud Computing", "question": "This cloud model is shared by many users.", "answer": "What is public cloud?" },
+                { "id": 219, "value": 100, "difficulty": 1, "category": "Cloud Computing", "question": "This cloud model is used by one organization.", "answer": "What is private cloud?" },
+                { "id": 220, "value": 100, "difficulty": 1, "category": "Cloud Computing", "question": "This scales resources automatically.", "answer": "What is autoscaling?" },
+
+                { "id": 221, "value": 200, "difficulty": 2, "category": "Cloud Computing", "question": "This distributes traffic across servers.", "answer": "What is load balancing?" },
+                { "id": 222, "value": 200, "difficulty": 2, "category": "Cloud Computing", "question": "This isolates applications in lightweight environments.", "answer": "What is containerization?" },
+                { "id": 223, "value": 200, "difficulty": 2, "category": "Cloud Computing", "question": "This orchestrates container clusters.", "answer": "What is Kubernetes?" },
+                { "id": 224, "value": 200, "difficulty": 2, "category": "Cloud Computing", "question": "This service runs code without managing servers.", "answer": "What is serverless computing?" },
+                { "id": 225, "value": 200, "difficulty": 2, "category": "Cloud Computing", "question": "This ensures cloud data is stored redundantly.", "answer": "What is replication?" },
+
+                { "id": 226, "value": 300, "difficulty": 3, "category": "Cloud Computing", "question": "This architecture distributes services across regions.", "answer": "What is multi-region deployment?" },
+                { "id": 227, "value": 300, "difficulty": 3, "category": "Cloud Computing", "question": "This isolates workloads using virtualized hardware.", "answer": "What is a hypervisor?" },
+                { "id": 228, "value": 300, "difficulty": 3, "category": "Cloud Computing", "question": "This ensures high availability during failures.", "answer": "What is fault tolerance?" },
+                { "id": 229, "value": 300, "difficulty": 3, "category": "Cloud Computing", "question": "This technique distributes data across multiple nodes.", "answer": "What is sharding?" },
+                { "id": 230, "value": 300, "difficulty": 3, "category": "Cloud Computing", "question": "This model combines on-prem and cloud resources.", "answer": "What is hybrid cloud?" }
+            ]
         }
     ]
 }

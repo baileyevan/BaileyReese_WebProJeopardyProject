@@ -220,5 +220,40 @@
         ],
         "isComplete": true,
         "winner": "lsiby1"
+    },
+    {
+        "id": 5,
+        "player1": "lsiby1",
+        "player2": "jsiby1",
+        "player1Score": 0,
+        "player1Difficulty": "EASY",
+        "player1AnswerHistory": [
+            0,
+            0,
+            0
+        ],
+        "player2Score": 0,
+        "player2Difficulty": "EASY",
+        "player2AnswerHistory": [
+            0,
+            0,
+            0
+        ],
+        "selectedCategories": [
+            "Cloud Computing",
+            "Computer Networks",
+            "Data Structures",
+            "Web Development",
+            "Programming Languages"
+        ],
+        "category1Remaining": 5,
+        "category2Remaining": 5,
+        "category3Remaining": 5,
+        "category4Remaining": 5,
+        "category5Remaining": 5,
+        "currentPlayersTurn": 0,
+        "completedQuestionIds": [],
+        "isComplete": false,
+        "winner": null
     }
 ]
