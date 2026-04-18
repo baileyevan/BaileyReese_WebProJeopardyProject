@@ -232,7 +232,9 @@ $question = $_SESSION["currentQuestion"];
     <div id="question-category-name-container">
         <h1>Category: <?php echo $category; ?></h1>
     </div>
+
     <div id="main-question-container" class="bs">
+
         <div id="question-turn-contianer">
             <h3>
                 Turn:
@@ -242,40 +244,85 @@ $question = $_SESSION["currentQuestion"];
             </h3>
         </div>
 
-        <div id="question-container">
-            <h2><?php echo $question["question"]; ?></h2>
-        </div>
-        <div id="form-container">
-            <form method="post">
+        <!-- ============================
+             FLIP CARD
+        ============================ -->
+        <div class="flip-card" id="flip-card">
+            <div class="flip-card-inner" id="flip-card-inner">
 
-                <div id="reveal-button-container">
-                    <button class="bs" id="reveal-button" type="button" onclick="document.getElementById('answer').style.display='block'">
+                <!-- FRONT SIDE -->
+                <div class="flip-card-front">
+                    <h2><?php echo $question["question"]; ?></h2>
+
+                    <!-- TIMER -->
+                    <h3 id="timer" style="margin-top:20px; color: var(--accent); font-size: 2rem;">
+                        15
+                    </h3>
+
+                    <button class="bs reveal-btn" id="reveal-btn" type="button">
                         Reveal Answer
                     </button>
-                    <p id="answer" style="display:none;">
-                        <strong><?php echo $question["answer"]; ?></strong>
-                    </p>
                 </div>
 
-                <div id="wrong-right-container">
-                    <input class="btn bs" type="submit" name="correct" value="Correct">
-                    <input class="btn bs" type="submit" name="wrong" value="Wrong">
+                <!-- BACK SIDE -->
+                <div class="flip-card-back">
+                    <h2><?php echo $question["answer"]; ?></h2>
+
+                    <form method="post" class="answer-buttons">
+                        <input class="btn bs correct-btn" type="submit" name="correct" value="Correct">
+                        <input class="btn bs wrong-btn" type="submit" name="wrong" value="Wrong">
+                    </form>
                 </div>
 
-
-                
-
-
-            </form>
+            </div>
         </div>
-
 
     </div>
 
-    
+    <!-- ============================
+         TIMER + AUTO WRONG + FLIP SCRIPT
+    ============================ -->
+    <script>
+        let timeLeft = 15;
+        let timerElement = document.getElementById("timer");
+        let autoSubmitTriggered = false;
 
+        // Countdown
+        let countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
 
-    
+            if (timeLeft <= 0 && !autoSubmitTriggered) {
+                autoSubmitTriggered = true;
+                clearInterval(countdown);
+
+                // Auto-submit WRONG
+                let form = document.createElement("form");
+                form.method = "POST";
+
+                let wrongInput = document.createElement("input");
+                wrongInput.type = "hidden";
+                wrongInput.name = "wrong";
+                wrongInput.value = "1";
+
+                form.appendChild(wrongInput);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }, 1000);
+
+        // Stop timer if user answers early
+        document.querySelectorAll("input[name='correct'], input[name='wrong']").forEach(btn => {
+            btn.addEventListener("click", () => {
+                clearInterval(countdown);
+            });
+        });
+
+        // Flip card
+        document.getElementById("reveal-btn").addEventListener("click", () => {
+            document.getElementById("flip-card").classList.add("flipped");
+        });
+    </script>
 
 </body>
 </html>

@@ -76,3 +76,111 @@
     opacity: 1.5;
 }
 
+/* ============================
+   FLIP CARD CONTAINER
+============================ */
+.flip-card {
+    width: 70%;
+    height: 45vh;
+    margin: auto;
+    perspective: 1200px;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* ============================
+   FRONT OF CARD (QUESTION)
+============================ */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.flip-card-front {
+    background-color: var(--card);
+    color: var(--text);
+}
+
+/* ============================
+   BACK OF CARD (ANSWER)
+============================ */
+.flip-card-back {
+    background-color: var(--bg);
+    color: var(--accent);
+    transform: rotateY(180deg);
+}
+
+/* ============================
+   BUTTONS ON BACK
+============================ */
+.answer-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 40px;
+}
+
+.correct-btn {
+    background-color: var(--player-1);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.wrong-btn {
+    background-color: var(--player-2);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.correct-btn:hover,
+.wrong-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-3px);
+    transition: 0.2s ease;
+}
+
+/* ============================
+   REVEAL BUTTON (FRONT)
+============================ */
+.reveal-btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: var(--accent);
+    color: black;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.reveal-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+    transition: 0.2s ease;
+}
