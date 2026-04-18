@@ -96,7 +96,7 @@ if ($isGameOver && !$game["isComplete"]) {
 }
 
 // =========================
-// HANDLE CARD CLICK (category + value)
+// HANDLE CARD CLICK
 // =========================
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["card"])) {
 
@@ -242,14 +242,13 @@ $currentPlayerName = ($game["currentPlayersTurn"] === 0)
                             <?php foreach ($values as $value): ?>
 
                                 <?php
-                                // 100 = EASY, 200 = MED, 300 = HARD
                                 $locked = false;
 
                                 if ($currentDifficulty === "EASY") {
                                     if ($value !== 100) $locked = true;
                                 } elseif ($currentDifficulty === "MED") {
                                     if ($value !== 200) $locked = true;
-                                } else { // HARD
+                                } else {
                                     if ($value !== 300) $locked = true;
                                 }
 
@@ -286,6 +285,54 @@ $currentPlayerName = ($game["currentPlayersTurn"] === 0)
     </div>
 
 <?php endif; ?>
+
+<!-- ============================
+     CONFETTI + SPARKLES SCRIPT
+============================ -->
+<script>
+// Simple confetti generator
+function launchConfetti() {
+    const duration = 3000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+        const particle = document.createElement("div");
+        particle.className = "confetti-piece";
+        particle.style.left = Math.random() * 100 + "vw";
+        particle.style.backgroundColor = `hsl(${Math.random() * 360}, 90%, 60%)`;
+        document.body.appendChild(particle);
+
+        setTimeout(() => particle.remove(), 2000);
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    })();
+}
+
+// Sparkle burst
+function sparkleBurst() {
+    for (let i = 0; i < 20; i++) {
+        const spark = document.createElement("div");
+        spark.className = "sparkle";
+        spark.style.left = "50%";
+        spark.style.top = "50%";
+        spark.style.transform = `rotate(${Math.random() * 360}deg) translate(0, -40px)`;
+        document.body.appendChild(spark);
+
+        setTimeout(() => spark.remove(), 1200);
+    }
+}
+
+// Trigger celebration when winner screen loads
+window.addEventListener("load", () => {
+    const winnerScreen = document.getElementById("main-winner-container");
+    if (winnerScreen) {
+        launchConfetti();
+        sparkleBurst();
+    }
+});
+</script>
 
 </body>
 </html>

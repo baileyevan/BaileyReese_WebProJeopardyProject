@@ -176,3 +176,45 @@ body {
     justify-content: center;
     border-radius: 20px;
 }
+
+/* Confetti pieces */
+.confetti-piece {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 14px;
+    opacity: 0.9;
+    animation: fall 2s linear forwards;
+    border-radius: 2px;
+    z-index: 9999;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.2;
+    }
+}
+
+/* Sparkles */
+.sparkle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, white, transparent);
+    border-radius: 50%;
+    animation: sparkleAnim 1.2s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes sparkleAnim {
+    0% {
+        transform: scale(0.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
