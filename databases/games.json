@@ -225,18 +225,18 @@
         "id": 5,
         "player1": "lsiby1",
         "player2": "jsiby1",
-        "player1Score": 0,
-        "player1Difficulty": "EASY",
+        "player1Score": 1000,
+        "player1Difficulty": "MED",
         "player1AnswerHistory": [
             0,
             0,
-            0
+            1
         ],
-        "player2Score": 0,
-        "player2Difficulty": "EASY",
+        "player2Score": 1100,
+        "player2Difficulty": "HARD",
         "player2AnswerHistory": [
-            0,
-            0,
+            1,
+            1,
             0
         ],
         "selectedCategories": [
@@ -246,14 +246,40 @@
             "Web Development",
             "Programming Languages"
         ],
-        "category1Remaining": 5,
-        "category2Remaining": 5,
-        "category3Remaining": 5,
-        "category4Remaining": 5,
-        "category5Remaining": 5,
-        "currentPlayersTurn": 0,
-        "completedQuestionIds": [],
-        "isComplete": false,
-        "winner": null
+        "category1Remaining": 0,
+        "category2Remaining": 0,
+        "category3Remaining": 0,
+        "category4Remaining": 0,
+        "category5Remaining": 0,
+        "currentPlayersTurn": 1,
+        "completedQuestionIds": [
+            124,
+            50,
+            220,
+            34,
+            125,
+            93,
+            129,
+            49,
+            126,
+            128,
+            219,
+            52,
+            218,
+            94,
+            216,
+            92,
+            217,
+            95,
+            39,
+            98,
+            44,
+            60,
+            43,
+            57,
+            38
+        ],
+        "isComplete": true,
+        "winner": "jsiby1"
     }
 ]
