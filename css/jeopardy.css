@@ -3,93 +3,140 @@
     --card: #122B52;
     --accent: #F6C445;
     --text: #EAF2FF;
-    --textAlt: #474747;
     --muted: #A7B4C7;
-    --player-1: rgb(98, 29, 235);
-    --player-2: rgb(196, 46, 46);
 }
 
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* Turn banner */
+#turn-banner {
+    width: 90vw;
+    margin: 3vh auto 0 auto;
+    padding: 12px;
+    text-align: center;
+    background-color: var(--accent);
+    color: var(--bg);
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+/* Main container */
 #jeopardy-main-container {
     width: 90vw;
     height: 80vh;
     margin: auto;
-    margin-top: 10vh;
+    margin-top: 4vh;
     background-color: var(--card);
     border-radius: 20px;
+    padding: 2vh 2vw;
+    display: flex;
+    flex-direction: column;
+}
 
+/* Top bar */
+#top-bar-container {
+    width: 100%;
+    height: 18vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2vh;
 }
 
 #jeopardy-game-header {
+    flex: 1;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    height: 15vh;
-    width: 100%;
-
 }
 
-#jeopardy-board-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-bottom: 5vh;
-}
-
-.category-card {
-    background-color: var(--bg);
-    width: 18%;
-    height: 20vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    border-radius: 20px;
-    padding: 2%;
-
-}
-
-#players-container {
-    width: 60vw;
-    height: 20vh;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: var(--bg);
-    margin-bottom: 5vh;
-    border-radius: 20px;
-
-}
-
+/* Player stats */
 .players-stats-container {
-    width: 40%;
-    background-color: var(--card);
+    width: 22%;
+    background-color: var(--bg);
+    border-radius: 20px;
+    padding: 1vh;
+    text-align: center;
+}
+
+/* Board */
+#jeopardy-board-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+/* Category column */
+.category-column {
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5vh;
+}
+
+/* Category header */
+.category-header {
+    background-color: var(--bg);
+    width: 100%;
+    height: 12vh;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 80%;
-    border-radius: 20px;
 }
 
-#exit-game-btn-container {
+.category-complete-msg {
+    color: var(--muted);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Cards */
+.category-cards-row {
+    width: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 1.5vh;
+}
+
+.value-card {
+    width: 100%;
+    height: 8vh;
+    border-radius: 12px;
+    display: flex;
     justify-content: center;
-    margin: auto;
+    align-items: center;
+}
+
+/* Locked cards */
+.value-card.locked {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Exit button */
+#exit-game-btn-container {
     width: 25vw;
-    border-radius: 20px;
-    height: 12vh;
+    height: 10vh;
     background-color: var(--bg);
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #exit-game-btn {
-
+    width: 70%;
 }
-
-
 
 /* Winner screen */
 #main-winner-container {
@@ -130,3 +177,44 @@
     border-radius: 20px;
 }
 
+/* Confetti pieces */
+.confetti-piece {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 14px;
+    opacity: 0.9;
+    animation: fall 2s linear forwards;
+    border-radius: 2px;
+    z-index: 9999;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.2;
+    }
+}
+
+/* Sparkles */
+.sparkle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, white, transparent);
+    border-radius: 50%;
+    animation: sparkleAnim 1.2s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes sparkleAnim {
+    0% {
+        transform: scale(0.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}

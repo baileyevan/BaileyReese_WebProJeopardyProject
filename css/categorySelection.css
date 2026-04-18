@@ -23,6 +23,7 @@
     margin: auto;
     margin-top: 10vh;
     border-radius: 20px;
+    padding-top: 2vh;
 }
 
 form {
@@ -34,7 +35,7 @@ form {
 }
 
 #category-selection-header {
-    height: 20%;
+    height: 12%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -46,24 +47,34 @@ form {
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    gap: 10px;
+    gap: 20px;
     width: 90%;
-    height: 65%;
+    height: 55%;
     background-color: var(--bg);
     border-radius: 20px;
     padding: 2%;
 }
 
+/* CATEGORY BOXES */
 .categoryCard {
     background-color: var(--accent);
     border-radius: 20px;
-    text-align: center;
+    width: 28%;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25%;
-    height: 70px;
-    transition: .1s;
+    /* centers text vertically */
+    text-align: center;
+    padding: 0 10px;
+    transition: .15s;
+}
+
+.categoryCard h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
 }
 
 .categoryCard:has(input:checked) {
@@ -71,11 +82,47 @@ form {
     color: var(--text);
 }
 
+/* UNIVERSAL BUTTON STYLE */
+.btn {
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 12px 40px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* REROLL BUTTON */
+#reroll-button-container input[type="submit"] {
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 10px 30px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.15s;
+    margin-left: 10px;
+    margin-top:-10px;
+}
+
+#reroll-button-container input[type="submit"]:hover {
+    transform: scale(1.05);
+}
+
 #reroll-information-container {
     margin-top: 2vh;
     margin-bottom: 1vh;
 }
 
+/* LABEL FIX */
 label {
     width: 100%;
     height: 100%;
@@ -85,10 +132,21 @@ label {
     justify-content: center;
 }
 
-#reroll-button-container {
+/* BUTTON GROUP ALIGNMENT */
+#reroll-button-container,
+#reroll-confirm-container,
+#go-back-button-container {
     display: flex;
-    gap: 20px;
-    margin-bottom: 2vh;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1vh;
+}
+
+/* GO BACK BUTTON (same as confirm) */
+#go-back-button-container .btn {
+    background-color: var(--accent);
+    color: var(--bg);
+    text-align: center;
 }
 
 .muted {

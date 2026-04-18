@@ -1,6 +1,39 @@
 <?php
 session_start();
 
+/*
+=========================
+GO BACK TO PLAYER SELECT
+=========================
+*/
+if (isset($_GET["goBack"]) && $_GET["goBack"] == 1) {
+
+    unset($_SESSION["currentCategories"]);
+    unset($_SESSION["selectedCategories"]);
+
+    // Reset rerolls
+    $_SESSION["rerollsRemaining"] = 3;
+
+    header("Location: ./playerSelect.php");
+    exit;
+}
+
+/*
+=========================
+RESET CATEGORIES ONLY
+=========================
+*/
+if (isset($_GET["resetCategories"]) && $_GET["resetCategories"] == 1) {
+
+    unset($_SESSION["currentCategories"]);
+    unset($_SESSION["selectedCategories"]);
+
+    // Reset rerolls back to 3
+    $_SESSION["rerollsRemaining"] = 3;
+
+    header("Location: ./categorySelection.php");
+    exit;
+}
 
 /*
 =========================
@@ -8,7 +41,7 @@ HARD RESET FOR NEW GAME
 =========================
 */
 if (isset($_GET["newGame"]) && $_GET["newGame"] == 1) {
-    
+
     unset($_SESSION["gameStats"]);
     unset($_SESSION["currentCategories"]);
     unset($_SESSION["selectedCategories"]);
@@ -17,8 +50,7 @@ if (isset($_GET["newGame"]) && $_GET["newGame"] == 1) {
     unset($_SESSION["currentCategory"]);
     unset($_SESSION["answeredQuestions"]);
     unset($_SESSION["gameId"]);
-    
-    // Redirect to remove the newGame parameter from URL
+
     header("Location: ./categorySelection.php");
     exit;
 }
@@ -45,18 +77,18 @@ $categoryNames = array_column($categories["categories"], "name");
 
 /*
 =========================
-REROLLS INIT
+INIT REROLLS
 =========================
 */
 if (!isset($_SESSION["rerollsRemaining"])) {
-    
     $_SESSION["rerollsRemaining"] = 3;
-    $rerollsRemaining = $_SESSION["rerollsRemaining"];
 }
+
+$rerollsRemaining = $_SESSION["rerollsRemaining"];
 
 /*
 =========================
-GENERATE NEW CATEGORY SET
+GENERATE INITIAL CATEGORY SET
 =========================
 */
 if (!isset($_SESSION["currentCategories"]) || empty($_SESSION["currentCategories"])) {
@@ -78,30 +110,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     */
     if (isset($_POST["confirmCategories"])) {
 
-        // =========================
-        // LOAD GAMES
-        // =========================
         $file = "../../databases/games.json";
         $games = json_decode(file_get_contents($file), true) ?? [];
 
         $lastGameId = 0;
-
         foreach ($games as $g) {
             if (isset($g["id"]) && $g["id"] > $lastGameId) {
                 $lastGameId = $g["id"];
             }
         }
 
-        // =========================
-        // HARD SESSION CLEAN
-        // =========================
         unset($_SESSION["gameStats"]);
         unset($_SESSION["currentQuestion"]);
         unset($_SESSION["currentCategory"]);
 
-        // =========================
-        // CREATE NEW GAME
-        // =========================
         $newGame = [
             "id" => $lastGameId + 1,
 
@@ -132,12 +154,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ];
 
         $games[] = $newGame;
-
         file_put_contents($file, json_encode($games, JSON_PRETTY_PRINT), LOCK_EX);
 
-        // =========================
-        // SESSION SYNC
-        // =========================
         $_SESSION["gameStats"] = $newGame;
         $_SESSION["selectedCategories"] = $_SESSION["currentCategories"];
 
@@ -147,31 +165,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     /*
     =========================
-    REROLL LOGIC
+    REROLL LOGIC (FIXED)
     =========================
     */
-    if (isset($_POST["reroll"]) && $_SESSION["rerollsRemaining"] > 0) {
+    if (isset($_POST["reroll"]) && $rerollsRemaining > 0) {
 
-        $_SESSION["rerollsRemaining"] = $_SESSION["rerollsRemaining"] - 1;
+        $_SESSION["rerollsRemaining"]--;
         $rerollsRemaining = $_SESSION["rerollsRemaining"];
-        unset($_POST["reroll"]);
 
         $rerollCategories = $_POST["rerollCategories"] ?? [];
-
         $current = $_SESSION["currentCategories"];
 
-        // keep non-selected
+        // Categories the user is keeping
         $keptCategories = array_diff($current, $rerollCategories);
 
-        $remainingPool = array_diff($categoryNames, $keptCategories);
+        // Remove ALL current categories from the pool
+        $remainingPool = array_diff($categoryNames, $current);
         shuffle($remainingPool);
 
+        // Build new category list
         $newCategories = array_merge(
             $keptCategories,
             array_slice($remainingPool, 0, 5 - count($keptCategories))
         );
 
-        $_SESSION["currentCategories"] = $newCategories;
+        $_SESSION["currentCategories"] = array_values($newCategories);
     }
 }
 
@@ -200,7 +218,6 @@ $rerollsRemaining = $_SESSION["rerollsRemaining"];
         <div id="category-display-container">
 
             <?php for ($i = 0; $i < 5; $i++): ?>
-
                 <div class="categoryCard bs">
 
                     <input type="checkbox"
@@ -217,7 +234,6 @@ $rerollsRemaining = $_SESSION["rerollsRemaining"];
                     </label>
 
                 </div>
-
             <?php endfor; ?>
 
         </div>
@@ -238,6 +254,12 @@ $rerollsRemaining = $_SESSION["rerollsRemaining"];
                    type="submit"
                    name="confirmCategories"
                    value="CONFIRM">
+        </div>
+
+        <div id="go-back-button-container">
+            <a href="categorySelection.php?goBack=1" class="cb btn">
+                GO BACK
+            </a>
         </div>
 
     </form>
