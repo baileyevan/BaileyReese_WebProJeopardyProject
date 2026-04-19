@@ -1,9 +1,8 @@
 <?php
+session_start();
 
 // num of players
 $numPlayers = isset($_SESSION["numPlayers"]) ? $_SESSION["numPlayers"] : 2;
-
-session_start();
 
 // Handle play button
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["play"])) {
@@ -20,18 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["register"])) {
 // Handle logout
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["logout"])) {
 
-    // Remove session data
-    unset($_SESSION["player1Name"]);
-    unset($_SESSION["player2Name"]);
-
-    // Remove cookies 
-    setcookie("player1Name", "", time() - 3600, "/");
-    setcookie("player2Name", "", time() - 3600, "/");
+    for ($i = 1; $i <= $numPlayers; $i++) {
+        unset($_SESSION["player{$i}Name"]);
+        setcookie("player{$i}Name", "", time() - 3600, "/");
+    }
 
     header("Location: ./playerSelect.php");
     exit;
 }
- // fix login logic for multiplayer
+
+// login logic
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["confirm"])) {
 
     $file = "../../databases/users.json";
@@ -64,8 +61,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["confirm"])) {
     }
 }
 
-// if all players exist in the session then they
-// are logged in and ready to play
+// check readiness
 $readyToPlay = true;
 
 for ($i = 1; $i <= $numPlayers; $i++) {
@@ -74,7 +70,6 @@ for ($i = 1; $i <= $numPlayers; $i++) {
         break;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -85,78 +80,70 @@ for ($i = 1; $i <= $numPlayers; $i++) {
     <title>Computer Science Jeopardy - Player Select</title>
     <link rel="stylesheet" href="../../css/common.css">
     <link rel="stylesheet" href="../../css/playerSelect.css">
-    
 </head>
 <body>
-    <div id="player-select-container">
-        <form method="post">
-            <div id="player-select-header">
-                <h1>Player Selection</h1>
-            </div>
-            <div id="players-container">
-                <?php
-                /* logic for dynamic player generation */
-                    for ($i = 1; $i <= $numPlayers; $i++):
-                        $sessionKey = "player" . $i . "Name";
-                        $errorVar = "errorPlayer" . $i;
-                ?>
-                    <div class="player-container">
-                        
-                        <?php if(isset($_SESSION[$sessionKey])): ?>
-                            <!-- If player already logged in -->
-                            <h2 class="success-welcome">
-                                WELCOME: <strong><?php echo htmlspecialchars($_SESSION[$sessionKey]); ?>!</strong>
-                            </h2>
 
-                        <?php else: ?>
-                            <!-- Login form for each player -->
-                            <h2>Player <?php echo $i; ?> Login...</h2>
+<div id="player-select-container">
+    <form method="post">
 
-                            <?php if (!empty($$errorVar)): ?>
-                                <p style="color:red; font-weight:800;">
-                                    <?php echo $$errorVar; ?>
-                                </p>
-                            <?php endif; ?>
+        <div id="player-select-header">
+            <h1>Player Selection</h1>
+        </div>
 
-                            <input type="text" name="player<?php echo $i; ?>Name" placeholder="Player <?php echo $i; ?> Name..." >
-                            <input type="password" name="player<?php echo $i; ?>Password" placeholder="Player <?php echo $i; ?> Password..." >
+        <div id="players-container">
 
-                            <div class="player-remember-container">
-                                <label for="rememberPlayer<?php echo $i; ?>">Remember me</label>
-                                <input type="checkbox" class="cb" name="rememberPlayer<?php echo $i; ?>">
-                            </div>
+            <?php for ($i = 1; $i <= $numPlayers; $i++): ?>
+                <div class="player-container">
 
+                    <?php if(isset($_SESSION["player{$i}Name"])): ?>
+
+                        <h2 class="success-welcome">
+                            WELCOME: <strong><?php echo htmlspecialchars($_SESSION["player{$i}Name"]); ?>!</strong>
+                        </h2>
+
+                    <?php else: ?>
+
+                        <h2>Player <?php echo $i; ?> Login...</h2>
+
+                        <?php if (!empty(${"errorPlayer{$i}"})): ?>
+                            <p style="color:red; font-weight:800;">
+                                <?php echo ${"errorPlayer{$i}"}; ?>
+                            </p>
                         <?php endif; ?>
 
-                    </div>
-                <?php endfor; ?>
-            </div>
-            <div id="player-select-controls">
-                <?php if($readyToPlay): ?>
+                        <input type="text" name="player<?php echo $i; ?>Name" placeholder="Player <?php echo $i; ?> Name...">
+                        <input type="password" name="player<?php echo $i; ?>Password" placeholder="Player <?php echo $i; ?> Password...">
 
-                    <input class="btn inv" type="submit" name="logout" value="LOGOUT" >
-                    <input class="btn inv" type="submit" name="play" value="PLAY" >
-                    
+                        <div class="player-remember-container">
+                            <label>Remember me</label>
+                            <input type="checkbox" class="cb" name="rememberPlayer<?php echo $i; ?>">
+                        </div>
 
-                <?php elseif (isset($_SESSION["player1Name"]) || isset($_SESSION["player2Name"])): ?>
+                    <?php endif; ?>
 
-                    <input class="btn inv" type="submit" name="logout" value="LOGOUT" >
-                    <div class="btn inv">
-                        <a href="../register/register.php" class="inv">REGISTER A USER</a>
-                    </div>
-                    <input class="btn inv" type="submit" name="confirm" value="CONFIRM">
+                </div>
+            <?php endfor; ?>
 
-                <?php else: ?>
+        </div>
 
-                    <input class="btn inv" type="submit" name="register" value="REGISTER A USER">
-                    <input class="btn inv" type="submit" name="confirm" value="CONFIRM">
+        <div id="player-select-controls">
 
-                <?php endif; ?>
-            </div>
-            
-        </form>
-        
-    </div>
-    
+            <?php if($readyToPlay): ?>
+
+                <input class="btn inv" type="submit" name="logout" value="LOGOUT">
+                <input class="btn inv" type="submit" name="play" value="PLAY">
+
+            <?php else: ?>
+
+                <input class="btn inv" type="submit" name="logout" value="LOGOUT">
+                <input class="btn inv" type="submit" name="confirm" value="CONFIRM">
+
+            <?php endif; ?>
+
+        </div>
+
+    </form>
+</div>
+
 </body>
 </html>
