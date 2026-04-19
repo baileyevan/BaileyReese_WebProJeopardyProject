@@ -24,6 +24,16 @@ session_start();
                 <input type="button" class="btn" value="PLAY" name="play">    
             </a>
         </div>
+        <div id="player-count-container">
+            <!-- select number of players -->
+            <label for="numPlayers">Number of Players:</label>
+            <select name="numPlayers" id="numPlayers">
+                <option value="2">2 Players</option>
+                <option value="3">3 Players</option>
+                <option value="4">4 Players</option>
+                <option value="5">5 Players</option>
+            </select>
+        </div>
     </div>
 
     

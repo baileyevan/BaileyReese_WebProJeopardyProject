@@ -45,9 +45,12 @@ foreach (array_reverse($games) as $g) {
 }
 
 // =========================
-// NEW GAME
+// NEW GAME \ adding mmultiplayer
 // =========================
 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["newGame"])) {
+
+    // set default players to 2
+    $_SESSION["nnumPlayers"] = isset($_POST["numPlayers"]) ? (int)$_POST["numPlayers"] : 2;
 
     $games = array_filter($games, function($g) {
         return !(
