@@ -1,6 +1,5 @@
 <?php
 
-
 $loggedIn = isset($_COOKIE["username"]);
 if ($loggedIn) {
     header("Location: ../../index.php");
@@ -36,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT), LOCK_EX);
 
-        // Redirect to login page after successful registration
         header("Location: ../game/playerSelect.php");
         exit;
     }
@@ -51,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Computer Science Jeopardy - Register</title>
     <link rel="stylesheet" href="../../css/common.css">
     <link rel="stylesheet" href="../../css/register.css">
-
 </head>
 <body>
     <div id="register-container" class="bs">
@@ -61,9 +58,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
         <div id="register-form" class="bs">
             <form method="post">
-                <div id="credentials-container" class="">
+                <div id="credentials-container">
                     <div class="credential-container">
                         <label class="labels-for-input" for="username">Username:</label>
+
                         <?php if ($error): ?>
                             <p style="color:red;"><?php echo $error; ?></p>
                         <?php endif; ?>
@@ -72,21 +70,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <p style="color:green;"><?php echo $message; ?></p>
                         <?php endif; ?>
 
-                        <input placeholder="USERNAME" type="text" id="username" name="username" required><br><br>
+                        <input placeholder="USERNAME" type="text" id="username" name="username" required>
                     </div>
-                    <div class="credential-container bs>
+
+                    <div class="credential-container bs">
                         <label class="labels-for-input" for="password">Password:</label>
-                        <input placeholder="PASSWORD" type="password" id="password" name="password" required><br><br>
+                        <input placeholder="PASSWORD" type="password" id="password" name="password" required>
                     </div>
                 </div>
 
-                
-
-                
                 <input type="submit" class="btn bs" value="Register">
             </form>
         </div>
     </div>
-    
 </body>
 </html>

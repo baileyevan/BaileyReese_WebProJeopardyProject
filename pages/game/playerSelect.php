@@ -90,7 +90,7 @@ for ($i = 1; $i <= $numPlayers; $i++) {
             <h1>Player Selection</h1>
         </div>
 
-        <div id="players-container">
+        <div id="players-container" class="players-count-<?php echo $numPlayers; ?>">
 
             <?php for ($i = 1; $i <= $numPlayers; $i++): ?>
                 <div class="player-container">
