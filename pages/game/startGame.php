@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Make sure both users are logged in
 $numPlayers = isset($_SESSION["numPlayers"]) ? $_SESSION["numPlayers"] : 2;
 
 for ($i = 1; $i <= $numPlayers; $i++) {
@@ -11,26 +10,19 @@ for ($i = 1; $i <= $numPlayers; $i++) {
     }
 }
 
-// Load games
 $file = "../../databases/games.json";
 $games = json_decode(file_get_contents($file), true);
+if (!$games) $games = [];
 
-if (!$games) {
-    $games = [];
-}
-
-// Get last game ID
 $lastGame = end($games);
 $lastGameId = $lastGame ? $lastGame["id"] : 0;
 
 $_SESSION["lastGameId"] = $lastGameId;
 
-// Check for active game
 $hasGame = false;
 $gameArr = null;
 
 foreach (array_reverse($games) as $g) { 
-
     $players = $g["players"] ?? [];
 
     $samePlayers = true;
@@ -52,23 +44,11 @@ foreach (array_reverse($games) as $g) {
     }
 }
 
-// =========================
-// NEW GAME
-// =========================
 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["newGame"])) {
 
     $_SESSION["numPlayers"] = isset($_POST["numPlayers"]) ? (int)$_POST["numPlayers"] : $numPlayers;
 
-    $games = array_filter($games, function($g) use ($numPlayers) {
-
-        $players = $g["players"] ?? [];
-
-        foreach ($players as $p) {
-            if (!in_array($p, $players)) {
-                return true;
-            }
-        }
-
+    $games = array_filter($games, function($g) {
         return $g["isComplete"];
     });
 
@@ -87,13 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["newGame"])) {
     exit;
 }
 
-// =========================
-// RESUME GAME
-// =========================
 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["resume"]) && $hasGame) {
 
     $_SESSION["gameStats"] = $gameArr;
-
     $_SESSION["selectedCategories"] = $gameArr["selectedCategories"];
 
     header("Location: ./jeopardy.php");
