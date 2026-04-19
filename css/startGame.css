@@ -45,3 +45,20 @@ form {
     justify-content: center;
     flex-direction: column;
 }
+
+/* player count dropdown */
+#player-count-container {
+    margin-top: 20px;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#player-count-container select {
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+}
