@@ -28,7 +28,6 @@ if (isset($_GET["resetCategories"]) && $_GET["resetCategories"] == 1) {
     unset($_SESSION["currentCategories"]);
     unset($_SESSION["selectedCategories"]);
 
-    // Reset rerolls back to 3
     $_SESSION["rerollsRemaining"] = 3;
 
     header("Location: ./categorySelection.php");
@@ -57,12 +56,17 @@ if (isset($_GET["newGame"]) && $_GET["newGame"] == 1) {
 
 /*
 =========================
-PLAYER CHECK
+PLAYER CHECK (DYNAMIC)
 =========================
+Ensure ALL players are logged in
 */
-if (!isset($_SESSION["player1Name"]) || !isset($_SESSION["player2Name"])) {
-    header("Location: ./playerSelect.php");
-    exit;
+$numPlayers = isset($_SESSION["numPlayers"]) ? $_SESSION["numPlayers"] : 2;
+
+for ($i = 1; $i <= $numPlayers; $i++) {
+    if (!isset($_SESSION["player{$i}Name"])) {
+        header("Location: ./playerSelect.php");
+        exit;
+    }
 }
 
 /*
@@ -113,6 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $file = "../../databases/games.json";
         $games = json_decode(file_get_contents($file), true) ?? [];
 
+        // Find last game ID
         $lastGameId = 0;
         foreach ($games as $g) {
             if (isset($g["id"]) && $g["id"] > $lastGameId) {
@@ -124,20 +129,45 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         unset($_SESSION["currentQuestion"]);
         unset($_SESSION["currentCategory"]);
 
+        /*
+        =========================
+        BUILD DYNAMIC PLAYER DATA
+        =========================
+        */
+        $players = [];
+        $playerScores = [];
+        $playerDifficulties = [];
+        $playerHistories = [];
+
+        for ($i = 1; $i <= $numPlayers; $i++) {
+
+            $playerName = $_SESSION["player{$i}Name"];
+
+            $players[] = $playerName;
+
+            // Initialize stats for each player
+            $playerScores[$playerName] = 0;
+            $playerDifficulties[$playerName] = "EASY";
+            $playerHistories[$playerName] = [0, 0, 0];
+        }
+
+        /*
+        =========================
+        CREATE NEW GAME OBJECT
+        =========================
+        */
         $newGame = [
             "id" => $lastGameId + 1,
 
-            "player1" => $_SESSION["player1Name"],
-            "player2" => $_SESSION["player2Name"],
+            // Store players as array
+            "players" => $players,
 
-            "player1Score" => 0,
-            "player1Difficulty" => "EASY",
-            "player1AnswerHistory" => [0,0,0],
+            // Store dynamic player stats (keyed by name)
+            "scores" => $playerScores,
+            "difficulties" => $playerDifficulties,
+            "answerHistories" => $playerHistories,
 
-            "player2Score" => 0,
-            "player2Difficulty" => "EASY",
-            "player2AnswerHistory" => [0,0,0],
-
+            // Category data
             "selectedCategories" => $_SESSION["currentCategories"],
 
             "category1Remaining" => 5,
@@ -146,16 +176,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "category4Remaining" => 5,
             "category5Remaining" => 5,
 
+            // Track whose turn it is (index of players array)
             "currentPlayersTurn" => 0,
+
             "completedQuestionIds" => [],
 
             "isComplete" => false,
             "winner" => null
         ];
 
+        // Save game
         $games[] = $newGame;
         file_put_contents($file, json_encode($games, JSON_PRETTY_PRINT), LOCK_EX);
 
+        // Store in session
         $_SESSION["gameStats"] = $newGame;
         $_SESSION["selectedCategories"] = $_SESSION["currentCategories"];
 
@@ -165,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     /*
     =========================
-    REROLL LOGIC (FIXED)
+    REROLL LOGIC (UNCHANGED)
     =========================
     */
     if (isset($_POST["reroll"]) && $rerollsRemaining > 0) {
@@ -176,14 +210,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $rerollCategories = $_POST["rerollCategories"] ?? [];
         $current = $_SESSION["currentCategories"];
 
-        // Categories the user is keeping
+        // Categories to keep
         $keptCategories = array_diff($current, $rerollCategories);
 
-        // Remove ALL current categories from the pool
+        // Remove current categories from pool
         $remainingPool = array_diff($categoryNames, $current);
         shuffle($remainingPool);
 
-        // Build new category list
+        // Build new categories
         $newCategories = array_merge(
             $keptCategories,
             array_slice($remainingPool, 0, 5 - count($keptCategories))
@@ -199,71 +233,71 @@ $rerollsRemaining = $_SESSION["rerollsRemaining"];
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Science Jeopardy - Select Categories</title>
-    <link rel="stylesheet" href="../../css/common.css">
-    <link rel="stylesheet" href="../../css/categorySelection.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computer Science Jeopardy - Select Categories</title>
+        <link rel="stylesheet" href="../../css/common.css">
+        <link rel="stylesheet" href="../../css/categorySelection.css">
+    </head>
+    <body>
 
-<div id="main-category-selection-container" class="bs">
-    <div id="category-selection-header">
-        <h1>Choose Your Categories</h1>
+    <div id="main-category-selection-container" class="bs">
+        <div id="category-selection-header">
+            <h1>Choose Your Categories</h1>
+        </div>
+
+        <form method="post">
+
+            <div id="category-display-container">
+
+                <?php for ($i = 0; $i < 5; $i++): ?>
+                    <div class="categoryCard bs">
+
+                        <input type="checkbox"
+                            class="hidden"
+                            name="rerollCategories[]"
+                            value="<?php echo htmlspecialchars($currentCategories[$i]); ?>"
+                            id="category<?php echo $i; ?>">
+
+                        <label class="<?php echo ($rerollsRemaining === 0) ? 'muted' : ''; ?>"
+                            for="category<?php echo $i; ?>">
+
+                            <h2><?php echo htmlspecialchars($currentCategories[$i]); ?></h2>
+
+                        </label>
+
+                    </div>
+                <?php endfor; ?>
+
+            </div>
+
+            <div id="reroll-information-container">
+                <h3>Select categories to reroll</h3>
+            </div>
+
+            <div id="reroll-button-container">
+                <h4>Rerolls Remaining: <?php echo $rerollsRemaining; ?></h4>
+
+                <input type="submit" name="reroll" value="Reroll"
+                    <?php if ($rerollsRemaining <= 0) echo "disabled"; ?>>
+            </div>
+
+            <div id="reroll-confirm-container">
+                <input class="cb btn"
+                    type="submit"
+                    name="confirmCategories"
+                    value="CONFIRM">
+            </div>
+
+            <div id="go-back-button-container">
+                <a href="categorySelection.php?goBack=1" class="cb btn">
+                    GO BACK
+                </a>
+            </div>
+
+        </form>
     </div>
 
-    <form method="post">
-
-        <div id="category-display-container">
-
-            <?php for ($i = 0; $i < 5; $i++): ?>
-                <div class="categoryCard bs">
-
-                    <input type="checkbox"
-                        class="hidden"
-                        name="rerollCategories[]"
-                        value="<?php echo htmlspecialchars($currentCategories[$i]); ?>"
-                        id="category<?php echo $i; ?>">
-
-                    <label class="<?php echo ($rerollsRemaining === 0) ? 'muted' : ''; ?>"
-                           for="category<?php echo $i; ?>">
-
-                        <h2><?php echo htmlspecialchars($currentCategories[$i]); ?></h2>
-
-                    </label>
-
-                </div>
-            <?php endfor; ?>
-
-        </div>
-
-        <div id="reroll-information-container">
-            <h3>Select categories to reroll</h3>
-        </div>
-
-        <div id="reroll-button-container">
-            <h4>Rerolls Remaining: <?php echo $rerollsRemaining; ?></h4>
-
-            <input type="submit" name="reroll" value="Reroll"
-                <?php if ($rerollsRemaining <= 0) echo "disabled"; ?>>
-        </div>
-
-        <div id="reroll-confirm-container">
-            <input class="cb btn"
-                   type="submit"
-                   name="confirmCategories"
-                   value="CONFIRM">
-        </div>
-
-        <div id="go-back-button-container">
-            <a href="categorySelection.php?goBack=1" class="cb btn">
-                GO BACK
-            </a>
-        </div>
-
-    </form>
-</div>
-
-</body>
+    </body>
 </html>

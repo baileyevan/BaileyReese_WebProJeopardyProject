@@ -1,5 +1,8 @@
 <?php
 
+// num of players
+$numPlayers = isset($_SESSION["numPlayers"]) ? $_SESSION["numPlayers"] : 2;
+
 session_start();
 
 // Handle play button
@@ -28,63 +31,49 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["logout"])) {
     header("Location: ./playerSelect.php");
     exit;
 }
-
+ // fix login logic for multiplayer
 if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["confirm"])) {
-    $player1Name = $_POST["player1Name"];
-    $player1Password = $_POST["player1Password"];
-    $rememberPlayer1 = isset($_POST["rememberPlayer1"]);
-    
-    $player2Name = $_POST["player2Name"];
-    $player2Password = $_POST["player2Password"];
-    $rememberPlayer2 = isset($_POST["rememberPlayer2"]);
 
-    $samePlayers = $player1Name === $player2Name;
-    if($samePlayers) {
-        $errorPlayer1 = "Player 1 cannot be the same as Player 2";
-        $errorPlayer2 = "Player 2 cannot be the same as Player 1";
-    } else {
-        $file = "../../databases/users.json";
-        $users = json_decode(file_get_contents($file), true);
+    $file = "../../databases/users.json";
+    $users = json_decode(file_get_contents($file), true);
+    if (!$users) $users = [];
 
-        if (!$users) $users = [];
+    for ($i = 1; $i <= $numPlayers; $i++) {
 
-        $foundPlayer1 = false;
-        $foundPlayer2 = false;
+        $name = $_POST["player{$i}Name"] ?? "";
+        $password = $_POST["player{$i}Password"] ?? "";
+        $remember = isset($_POST["rememberPlayer{$i}"]);
 
+        $found = false;
 
         foreach ($users as $user) {
-            if ($user["username"] === $player1Name && password_verify($player1Password, $user["password"])) {
-                $_SESSION["player1Name"] = $player1Name;
-                $foundPlayer1 = true;
+            if ($user["username"] === $name && password_verify($password, $user["password"])) {
 
-                if ($rememberPlayer1) {
-                    setcookie("player1Name", $player1Name, time() + (86400 *7), "/");
-                }
-            }
+                $_SESSION["player{$i}Name"] = $name;
+                $found = true;
 
-            if ($user["username"] === $player2Name && password_verify($player2Password, $user["password"])) {
-                $_SESSION["player2Name"] = $player2Name;
-                $foundPlayer2 = true;
-
-                if ($rememberPlayer2) {
-                    setcookie("player2Name", $player2Name, time() + (86400 *7), "/");
+                if ($remember) {
+                    setcookie("player{$i}Name", $name, time() + (86400 * 7), "/");
                 }
             }
         }
 
-        if (!$foundPlayer1) $errorPlayer1 = "Player 1 Invalid Login";
-        if (!$foundPlayer2) $errorPlayer2 = "Player 2 Invalid Login";  
-
+        if (!$found) {
+            ${"errorPlayer{$i}"} = "Player {$i} Invalid Login";
+        }
     }
-
-
-
-    
 }
 
-// if both players exist in the session then they
+// if all players exist in the session then they
 // are logged in and ready to play
-$readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]);
+$readyToPlay = true;
+
+for ($i = 1; $i <= $numPlayers; $i++) {
+    if (!isset($_SESSION["player{$i}Name"])) {
+        $readyToPlay = false;
+        break;
+    }
+}
 
 ?>
 
@@ -105,42 +94,42 @@ $readyToPlay = isset($_SESSION["player1Name"]) && isset($_SESSION["player2Name"]
                 <h1>Player Selection</h1>
             </div>
             <div id="players-container">
-                <div class="player-container p1">
-                    <?php if(isset($_SESSION["player1Name"])): ?>
-                        <h2 class="success-welcome">WELCOME: <?php echo "<strong>" . htmlspecialchars($_SESSION["player1Name"]) . "!</strong>"; ?>
-                    <?php else: ?>
-                        <h2>Player 1 Login...</h2>
-                        <?php if (!empty($errorPlayer1)): ?>
-                            <p style="color:rgb(196, 46, 46); font-weight: 800;"><?php echo $errorPlayer1; ?></p>
-                        <?php endif; ?>
-                        <input type="text" id="player1Name" name="player1Name" placeholder="Player 1 Name..." >
-                        <input type="password" id="player1Password" name="player1Password" placeholder="Player 1 Password..." >
-                        <div class="player-remember-container">
-                            <pre><label class="remember-label" for="rememberPlayer1">Remember me</label></pre>
-                            <input type="checkbox" class="cb" style="accent-color: rgb(196, 46, 46);" id="rememberPlayer1" name="rememberPlayer1">
-                        </div>
+                <?php
+                /* logic for dynamic player generation */
+                    for ($i = 1; $i <= $numPlayers; $i++):
+                        $sessionKey = "player" . $i . "Name";
+                        $errorVar = "errorPlayer" . $i;
+                ?>
+                    <div class="player-container">
+                        
+                        <?php if(isset($_SESSION[$sessionKey])): ?>
+                            <!-- If player already logged in -->
+                            <h2 class="success-welcome">
+                                WELCOME: <strong><?php echo htmlspecialchars($_SESSION[$sessionKey]); ?>!</strong>
+                            </h2>
 
-                    <?php endif; ?>
-                    
-                </div>
-                <div class="player-container p2">
-                    <?php if(isset($_SESSION["player2Name"])): ?>
-                        <h2 class="success-welcome">WELCOME: <?php echo "<strong>" . htmlspecialchars($_SESSION["player2Name"]) . "!</strong>"; ?>
-                    <?php else: ?>
-                        <h2>Player 2 Login...</h2>
-                        <?php if (!empty($errorPlayer2)): ?>
-                            <p style="color:rgb(98, 29, 235); font-weight: 800;"><?php echo $errorPlayer2; ?></p>
+                        <?php else: ?>
+                            <!-- Login form for each player -->
+                            <h2>Player <?php echo $i; ?> Login...</h2>
+
+                            <?php if (!empty($$errorVar)): ?>
+                                <p style="color:red; font-weight:800;">
+                                    <?php echo $$errorVar; ?>
+                                </p>
+                            <?php endif; ?>
+
+                            <input type="text" name="player<?php echo $i; ?>Name" placeholder="Player <?php echo $i; ?> Name..." >
+                            <input type="password" name="player<?php echo $i; ?>Password" placeholder="Player <?php echo $i; ?> Password..." >
+
+                            <div class="player-remember-container">
+                                <label for="rememberPlayer<?php echo $i; ?>">Remember me</label>
+                                <input type="checkbox" class="cb" name="rememberPlayer<?php echo $i; ?>">
+                            </div>
+
                         <?php endif; ?>
-                        <input type="text" id="player2Name" name="player2Name" placeholder="Player 2 Name..." >
-                        <input type="password" id="player2Password" name="player2Password" placeholder="Player 2 Password..." >
-                        <div class="player-remember-container">
-                            <pre><label for="rememberPlayer2">Remember me</label></pre>
-                            <input type="checkbox" class="cb" style="accent-color: rgb(98, 29, 235);" id="rememberPlayer2" name="rememberPlayer2" >
-                        </div>
-                    <?php endif; ?>
-                    
-                    
-                </div>
+
+                    </div>
+                <?php endfor; ?>
             </div>
             <div id="player-select-controls">
                 <?php if($readyToPlay): ?>
