@@ -13,14 +13,12 @@ function calculateDifficulty($currentDifficulty, $history) {
     $lastThree = array_slice($history, -3);
     $lastTwo = array_slice($history, -2);
 
-    // Level down: last 2 wrong
     if (count($lastTwo) === 2 && $lastTwo[0] == 0 && $lastTwo[1] == 0) {
         if ($currentDifficulty === "HARD") return "MED";
         if ($currentDifficulty === "MED") return "EASY";
         return "EASY";
     }
 
-    // Level up: last 3 correct
     if (count($lastThree) === 3 && array_sum($lastThree) === 3) {
         if ($currentDifficulty === "EASY") return "MED";
         if ($currentDifficulty === "MED") return "HARD";
@@ -81,6 +79,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $game["currentPlayersTurn"] = ($currentPlayer === 0) ? 1 : 0;
 
             $_SESSION["gameStats"] = $game;
+
+            // FIX: persist answer updates to JSON immediately
+            $fileGames = "../../databases/games.json";
+            $games = json_decode(file_get_contents($fileGames), true);
+
+            foreach ($games as &$g) {
+                if ($g["id"] === $game["id"]) {
+                    $g = $game;
+                    break;
+                }
+            }
+            unset($g);
+
+            file_put_contents($fileGames, json_encode($games, JSON_PRETTY_PRINT), LOCK_EX);
         }
 
         header("Location: ./jeopardy.php");
@@ -124,6 +136,10 @@ foreach ($data["categories"] as $cat) {
 FILTER USED QUESTIONS
 =========================
 */
+if (!isset($game["completedQuestionIds"])) {
+    $game["completedQuestionIds"] = [];
+}
+
 $availableQuestions = [];
 
 foreach ($questions as $q) {
@@ -132,11 +148,6 @@ foreach ($questions as $q) {
     }
 }
 
-/*
-=========================
-NO QUESTIONS LEFT
-=========================
-*/
 if (empty($availableQuestions)) {
     header("Location: ./jeopardy.php");
     exit;
@@ -188,6 +199,7 @@ if (!isset($_SESSION["currentQuestion"])) {
 }
 
 $question = $_SESSION["currentQuestion"];
+
 $currentPlayerName = ($game["currentPlayersTurn"] === 0)
     ? $game["player1"]
     : $game["player2"];
@@ -234,47 +246,6 @@ $currentPlayerName = ($game["currentPlayersTurn"] === 0)
     </div>
 
 </div>
-
-<script>
-let timeLeft = 10;
-let timer = document.getElementById("timer");
-let flipCard = document.querySelector(".flip-card");
-let wrongButton = document.querySelector("button[name='wrong']");
-let answerButtons = document.querySelectorAll(".answer-buttons button");
-let answered = false;
-
-// Stop timer if user answers early
-answerButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        answered = true;
-    });
-});
-
-let countdown = setInterval(() => {
-    if (answered) {
-        clearInterval(countdown);
-        return;
-    }
-
-    timeLeft--;
-    timer.textContent = timeLeft;
-
-    if (timeLeft <= 0) {
-        clearInterval(countdown);
-
-        if (!flipCard.classList.contains("flipped")) {
-            flipCard.classList.add("flipped");
-        }
-
-        setTimeout(() => {
-            if (!answered && wrongButton) {
-                wrongButton.click();
-            }
-        }, 800);
-    }
-}, 1000);
-</script>
-
 
 </body>
 </html>

@@ -16,7 +16,12 @@ if (!$games) $games = [];
 // =========================
 if (!isset($_SESSION["gameStats"])) {
 
-    $newId = !empty($games) ? end($games)["id"] + 1 : 1;
+    // safer max ID calculation
+    $newId = 1;
+    if (!empty($games)) {
+        $ids = array_column($games, "id");
+        $newId = max($ids) + 1;
+    }
 
     $newGame = [
         "id" => $newId,
@@ -285,54 +290,6 @@ $currentPlayerName = ($game["currentPlayersTurn"] === 0)
     </div>
 
 <?php endif; ?>
-
-<!-- ============================
-     CONFETTI + SPARKLES SCRIPT
-============================ -->
-<script>
-// Simple confetti generator
-function launchConfetti() {
-    const duration = 3000;
-    const end = Date.now() + duration;
-
-    (function frame() {
-        const particle = document.createElement("div");
-        particle.className = "confetti-piece";
-        particle.style.left = Math.random() * 100 + "vw";
-        particle.style.backgroundColor = `hsl(${Math.random() * 360}, 90%, 60%)`;
-        document.body.appendChild(particle);
-
-        setTimeout(() => particle.remove(), 2000);
-
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
-        }
-    })();
-}
-
-// Sparkle burst
-function sparkleBurst() {
-    for (let i = 0; i < 20; i++) {
-        const spark = document.createElement("div");
-        spark.className = "sparkle";
-        spark.style.left = "50%";
-        spark.style.top = "50%";
-        spark.style.transform = `rotate(${Math.random() * 360}deg) translate(0, -40px)`;
-        document.body.appendChild(spark);
-
-        setTimeout(() => spark.remove(), 1200);
-    }
-}
-
-// Trigger celebration when winner screen loads
-window.addEventListener("load", () => {
-    const winnerScreen = document.getElementById("main-winner-container");
-    if (winnerScreen) {
-        launchConfetti();
-        sparkleBurst();
-    }
-});
-</script>
 
 </body>
 </html>
